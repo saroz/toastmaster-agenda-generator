@@ -1,0 +1,391 @@
+
+/* Variables
+========================================================================== */
+
+$white: #ffffff;
+$black: #000000;
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.d-block {
+  display: block;
+}
+.pl-0 {
+  padding-left: 0 !important;
+}
+.pr-0 {
+  padding-right: 0 !important;
+}
+.time {
+  min-width: 9.375rem;
+}
+dt,
+.title-bold {
+  color: #004165;
+  font-weight: 700;
+  line-height: 1.8;
+  padding: 0.2rem 0.6rem;
+}
+dd {
+  margin: 0 0 2rem;
+}
+hr {
+  border: none;
+  margin: 0;
+}
+dl, p, .lead {
+  margin: 0;
+  padding: 0;
+  color: #000;
+  font-size: 1.3rem;
+  line-height: 1.8;
+}
+
+.lead {
+  margin-bottom: 2rem;
+}
+
+[contenteditable=true],
+[contenteditable=false] {
+  cursor: text;
+  text-align: left;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0.4rem;
+  &:empty::before {
+    content: attr(placeholder);
+  }
+}
+
+[contenteditable=true] {
+  transition-delay: 0s!important;
+  transition: .1s background linear;
+  &:hover {
+    background-color: #fafafa;
+  }
+  &:focus {
+    outline: 2px solid transparent;
+    background-color: #eeeeee;
+    &::before {
+      opacity: 0.5;
+    }
+  }
+}
+
+table {
+  width: 100%;
+  border: 1px solid #444444;
+  margin-top: .25rem;
+  td, th {
+    border: 1px solid #444444;
+    padding: 0 .625rem;
+    color: #444444;
+    text-align: left;
+    height: 15px;
+  }
+  td:empty {
+    height: 18px;
+  }
+  th:empty {
+    display: none;
+  }
+  td:last-of-type {
+    text-align: right;
+  }
+}
+blockquote ~ table {
+  th, td {
+    border-color: transparent !important;
+    padding: 0
+  }
+}
+.fa-spinner {
+  margin-left: .625rem;
+}
+.fa-print {
+    font-size: 1.25rem !important;
+}
+
+
+/* UTILITIES
+========================================================================== */
+.ballots {
+  padding-left: 5.375rem;
+  margin-top: 1.25rem;
+  box-sizing: border-box;
+  display: flex !important;
+  margin: 15px -10px 0;
+  p{
+    width: 33.33%;
+    padding: 0 10px;
+  }
+  span {
+      display: block;
+      font-size: .625rem;
+      display: block;
+      border: 1px dotted $black;
+      padding: .5rem .625rem;
+      height: 4.5rem;
+  }
+}
+blockquote {
+  margin: .125rem 0;
+  border: 1px solid $black;
+  border-left: .375rem solid $black;
+  padding: .875rem;
+  margin-bottom: .625rem;
+  line-height: 1.8;
+  strong {
+    display: block;
+    margin-left: 1rem;
+    max-width: 80%;
+    flex: 0 0 80%;
+  }
+}
+
+
+.agenda {
+  margin-bottom: 0;
+  padding: 2rem;
+  position: relative;
+  outline: transparent dashed 1px;
+  transition: all .3s;
+  background-color: $white;
+  z-index: 10;
+  &-actionButtons {
+    position: absolute;
+    display: flex;
+    left: auto;
+    opacity: 0;
+    right: 2rem;
+    top: 0;
+    transition: all 300ms linear;
+    .action {
+      width: 2.8rem;
+      height: 2.8rem;
+      display: block;      
+      border-radius: .4rem;
+      margin-left: 1rem;
+      cursor: pointer;
+      &-remove {
+        background-color: #DB0000; 
+      }
+      &-reorder {
+        background-color: #FF8900;
+        cursor: grab;
+      }
+      &-add {
+        background-color: #00D664;
+      }
+    }  
+  }
+  &:hover {
+    outline: #d3d3d3 dashed 1px;
+    overflow: visible;
+    box-shadow: #fafafa 0 1rem 2rem;
+    z-index: 11;
+    .agenda-actionButtons {
+      opacity: 1;
+      top: -1.5rem;
+    }
+  }
+  &-time {
+    max-width: 6rem;
+    flex: 0 0 6rem;
+    font-weight: 700;
+    color: #003F62;
+    font-size: 1.4rem;
+    input {
+      width: 100%;
+      color: #003F62;
+      &::placeholder {
+        color: #003F62;
+      }
+    }  
+  }
+  &-title {
+    margin: 0;
+    font-size: 1.4rem;
+    max-width: calc(100% - 26rem);
+    flex: 0 0 calc(100% - 26rem);
+  }
+  h4.agenda-title {
+    font-weight: 700;
+  }
+  &-TM {
+    margin-left: auto;
+    font-size: 1.4rem;
+    max-width: 20rem;
+    flex: 0 0 20rem;
+
+    input {
+      text-align: right;
+    }
+  }
+  &-content {
+    margin-left: 6rem;
+    border-top: 1px solid #eee;
+    margin-top: 0.6rem;
+    * {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+.mark-down {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 0.6rem;
+  span {
+    display: block;
+    font-weight: 700;
+    height: 2.6rem;
+    line-height: 2.6rem;
+    background-color: #fff;
+    color: #5f6368;
+    margin-right: 1rem;
+    border-radius: 0.2rem;
+    &.d-block {
+      max-width: 100%;
+      flex: 0 0 100%;
+      font-size: 1rem;
+      text-transform: capitalize;
+      color: #999;
+    }
+    &.action {
+      border: 1px solid rgba(0, 0, 0, .1);
+      padding: 0 1rem;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 300ms linear;
+      &:hover {
+        background: rgba(0, 123, 255, 0.5 );
+        box-shadow: rgba(0, 123, 255, 0.2 ) 0 .4rem .8rem;
+        color: #fff;
+      }
+    }
+  }
+}
+
+
+.btn {
+  border: none;
+  height: 4rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0 2rem;
+  padding: 0 2rem;
+  background-color: #007bff;
+  color: $white;
+  &:focus {
+    outline: 2px solid transparent;
+  }
+}
+
+.form-item {
+  border: none;
+  border-radius: 0.4rem;
+  font-size: inherit;
+  color: inherit;
+  line-height: 1.8;
+  display: block;
+  width: 100%;
+  padding: 0.2rem 0.6rem;
+  transition: .1s background linear;
+  box-sizing: border-box;
+  font-weight: inherit;
+  &:hover {
+    background-color: #fafafa;
+  }
+  &:focus {
+    outline: 2px solid transparent;
+    background-color: #eeeeee;
+  }
+}
+textarea.form-item {
+  resize: none;
+  width: 100%;
+  min-height: 8rem;
+  &.large {
+    min-height: 20rem;
+  }
+}
+
+
+// stylelint-disable declaration-no-important, selector-no-qualifying-type
+
+// Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css
+
+// ==========================================================================
+// Print styles.
+// Inlined to avoid the additional HTTP request:
+// https://www.phpied.com/delay-loading-your-print-css/
+// ==========================================================================
+
+  @media print {
+    *,
+    *::before,
+    *::after {
+      // Bootstrap specific; comment out `color` and `background`
+      //color: $black !important; // Black prints faster
+      text-shadow: none !important;
+      //background: transparent !important;
+      box-shadow: none !important;
+    }
+    table, td, th, .ballots span, blockquote {
+      border-color: #000;
+    }
+
+    a {
+      &:not(.btn) {
+        text-decoration: underline;
+      }
+    }
+
+    abbr[title]::after {
+      content: " (" attr(title) ")";
+    }
+
+    pre {
+      white-space: pre-wrap !important;
+    }
+    pre,
+    blockquote {
+      page-break-inside: avoid;
+    }
+
+
+    thead {
+      display: table-header-group;
+    }
+
+    tr,
+    img {
+      page-break-inside: avoid;
+    }
+
+    p,
+    h2,
+    h3 {
+      orphans: 3;
+      widows: 3;
+    }
+
+    h2,
+    h3 {
+      page-break-after: avoid;
+    }
+    aside {
+      border-width: 1px;
+    }
+    @page {
+      size: A4;
+      margin: 0;
+    }
+  }
