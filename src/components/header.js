@@ -7,7 +7,7 @@ const SiteHeader = styled.header`
   position: fixed;
   top: 0;
   width: 100%;
-  height: 8rem;
+  height: 6rem;
   box-sizing: border-box;
   z-index: 9999;
   @media print {
@@ -16,9 +16,11 @@ const SiteHeader = styled.header`
 `;
 const SiteName = styled.h1`
   margin: 0;
-  font-size: 1.8rem;
-  padding: 2rem 4rem;
-  font-weight: normal;
+  font-size: 1.4rem;
+  padding: 0 4rem;
+  line-height: 6rem;
+  letter-spacing: 1px;
+  font-weight: 700;
   span {
     color: #ffffff;
     text-decoration: none;

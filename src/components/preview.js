@@ -29,7 +29,7 @@ const PreviewIn = styled.div`
     min-height: 168.3779527559rem;
     display: grid;
     align-items: start;
-    grid-template-rows: 15rem 1fr;
+    grid-template-rows: 15rem 1fr 9rem;
     grid-template-columns: 25% 25% 25% 25%;
     grid-template-areas:
     "header header header header"
@@ -66,16 +66,21 @@ const TMILogo = styled.div`
 
 const AgendaSideBar = styled.aside `
     grid-area: sidebar;
-    border-right: 0.2rem solid #004165;
-    margin-top: 12rem;
-    padding-right: 4rem;
-    grid-auto-rows: 1fr;
     height: 100%;
+    padding-top: 12rem;
+    box-sizing: border-box;
+    position: relative;
+    .inWrap {
+        border-right: 0.2rem solid #004165;
+        height: 100%;
+        padding-right: 4rem;
+    }
 `;
 
 const AgendaList = styled.div`
     grid-area: main;
     padding-left: 3rem;
+    height: 100%;
 `;
 
 const Ballots = styled.div`;
@@ -330,111 +335,113 @@ function MeetingAgendaPreview ({ className }) {
                         </TMILogo>
                     </AgendaHeader>
                     <AgendaSideBar>
-                        <dl>
-                            <dt>President</dt>
-                            <dd>
-                                <Field
-                                type="text"
-                                autoComplete="off"
-                                name="president"
-                                onChange={updateMeetingBasicInfo}
-                                value={meetingBasic.president}
-                                placeholder="Club president name"/>
-                            </dd>
+                        <div className="inWrap"> 
+                            <dl>
+                                <dt>President</dt>
+                                <dd>
+                                    <Field
+                                    type="text"
+                                    autoComplete="off"
+                                    name="president"
+                                    onChange={updateMeetingBasicInfo}
+                                    value={meetingBasic.president}
+                                    placeholder="Club president name"/>
+                                </dd>
 
-                            <dt>VP Education</dt>
-                            <dd>
-                                <Field
-                                type="text"
-                                autoComplete="off"
-                                name="vPEducation"
-                                onChange={updateMeetingBasicInfo}
-                                value={meetingBasic.vPEducation}
-                                placeholder="Club VP Education name" />
-                            </dd>
-                            <dt>VP Membership</dt>
-                            <dd>
-                                <Field
-                                type="text"
-                                autoComplete="off"
-                                name="vPMembership"
-                                onChange={updateMeetingBasicInfo}
-                                value={meetingBasic.vPMembership}
-                                placeholder="Club VP Membership name" />
-                            </dd>
-                            
-                            <dt>VP Public Relations</dt>
-                            <dd>
-                                <Field
-                                type="text"
-                                autoComplete="off"
-                                name="vPRelation"
-                                onChange={updateMeetingBasicInfo}
-                                value={meetingBasic.vPRelation}
-                                placeholder="Club VP Public Relations name" />
-                            </dd>
+                                <dt>VP Education</dt>
+                                <dd>
+                                    <Field
+                                    type="text"
+                                    autoComplete="off"
+                                    name="vPEducation"
+                                    onChange={updateMeetingBasicInfo}
+                                    value={meetingBasic.vPEducation}
+                                    placeholder="Club VP Education name" />
+                                </dd>
+                                <dt>VP Membership</dt>
+                                <dd>
+                                    <Field
+                                    type="text"
+                                    autoComplete="off"
+                                    name="vPMembership"
+                                    onChange={updateMeetingBasicInfo}
+                                    value={meetingBasic.vPMembership}
+                                    placeholder="Club VP Membership name" />
+                                </dd>
+                                
+                                <dt>VP Public Relations</dt>
+                                <dd>
+                                    <Field
+                                    type="text"
+                                    autoComplete="off"
+                                    name="vPRelation"
+                                    onChange={updateMeetingBasicInfo}
+                                    value={meetingBasic.vPRelation}
+                                    placeholder="Club VP Public Relations name" />
+                                </dd>
 
-                            <dt>Secretary</dt>
-                            <dd>
-                                <Field
-                                type="text"
-                                autoComplete="off"
-                                name="secretary"
-                                onChange={updateMeetingBasicInfo}
-                                value={meetingBasic.secretary}
-                                placeholder="Club Secretary name" />
-                            </dd>
+                                <dt>Secretary</dt>
+                                <dd>
+                                    <Field
+                                    type="text"
+                                    autoComplete="off"
+                                    name="secretary"
+                                    onChange={updateMeetingBasicInfo}
+                                    value={meetingBasic.secretary}
+                                    placeholder="Club Secretary name" />
+                                </dd>
 
-                            <dt>Treasurer</dt>
-                            <dd>
-                                <Field
-                                type="text"
-                                autoComplete="off"
-                                name="treasurer"
-                                onChange={updateMeetingBasicInfo}
-                                value={meetingBasic.treasurer}
-                                placeholder="Club Treasurer name" />
-                            </dd>
+                                <dt>Treasurer</dt>
+                                <dd>
+                                    <Field
+                                    type="text"
+                                    autoComplete="off"
+                                    name="treasurer"
+                                    onChange={updateMeetingBasicInfo}
+                                    value={meetingBasic.treasurer}
+                                    placeholder="Club Treasurer name" />
+                                </dd>
 
-                            <dt>Sergeant-At-Arms</dt>
-                            <dd>
-                                <Field
-                                type="text"
-                                autoComplete="off"
-                                name="sergeant"
+                                <dt>Sergeant-At-Arms</dt>
+                                <dd>
+                                    <Field
+                                    type="text"
+                                    autoComplete="off"
+                                    name="sergeant"
+                                    onChange={updateMeetingBasicInfo}
+                                    value={meetingBasic.sergeant}
+                                    placeholder="Club Sergeant-At-Arms name" />
+                                </dd>
+                                <dt>Past President</dt>
+                                <dd>
+                                    <Field
+                                    type="text"
+                                    autoComplete="off"
+                                    name="pastPresident"
+                                    onChange={updateMeetingBasicInfo}
+                                    value={meetingBasic.pastpresident}
+                                    placeholder="Past President" />
+                                </dd>
+                            </dl>
+                            <p className="lead d-block">
+                                <Textarea
+                                name="meetingDetail"
+                                value={meetingBasic.meetingDetail}
                                 onChange={updateMeetingBasicInfo}
-                                value={meetingBasic.sergeant}
-                                placeholder="Club Sergeant-At-Arms name" />
-                            </dd>
-                            <dt>Past President</dt>
-                            <dd>
-                                <Field
-                                type="text"
-                                autoComplete="off"
-                                name="pastPresident"
+                                placeholder="We meet every Wednesday from 6:00pm to 7:00pm at XYZ Restaurant, Kathmandu, Nepal."
+                                required />
+                            </p>
+                            <p className="lead">
+                                <span className="d-block title-bold">Club Mission</span>
+                                <Textarea
+                                className="large"
+                                name="clubMission"
+                                value={meetingBasic.clubMission}
                                 onChange={updateMeetingBasicInfo}
-                                value={meetingBasic.pastpresident}
-                                placeholder="Past President" />
-                            </dd>
-                        </dl>
-                        <p className="lead d-block">
-                            <Textarea
-                            name="meetingDetail"
-                            value={meetingBasic.meetingDetail}
-                            onChange={updateMeetingBasicInfo}
-                            placeholder="We meet every Wednesday from 6:00pm to 7:00pm at XYZ Restaurant, Kathmandu, Nepal."
-                            required />
-                        </p>
-                        <p className="lead">
-                            <span className="d-block title-bold">Club Mission</span>
-                            <Textarea
-                            className="large"
-                            name="clubMission"
-                            value={meetingBasic.clubMission}
-                            onChange={updateMeetingBasicInfo}
-                            placeholder="We provide a supportive and positive learning experience in which members are empowered to develop communication and leadership skills, resulting in greater self-confidence and personal growth."
-                            required />
-                        </p>
+                                placeholder="We provide a supportive and positive learning experience in which members are empowered to develop communication and leadership skills, resulting in greater self-confidence and personal growth."
+                                required />
+                            </p>
+                        </div>
                     </AgendaSideBar> 
                     <AgendaList>
                         <ClubName>
