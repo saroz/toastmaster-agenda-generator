@@ -284,19 +284,13 @@ blockquote {
 }
 
 .buttons {
-  position: fixed;
-  left: 50%;
-  transform: translate(-50%, 2rem);
-  margin: 0 auto;
-  top: 0;
   z-index: 1090;
   display: flex;
   justify-content: center;
-  width: 119.0551181102rem;
   transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
-  &.yep {
-    transform: translate(-50%, 0);
-  }
+  position: sticky;
+  top: 0;
+  margin: 2rem 0;
   .btn {
     box-shadow: rgba(255, 255, 255, 0.2) 0 1px 0, rgba(0 ,0, 0, 0.2) 0 0.5rem 2.5rem;
   }

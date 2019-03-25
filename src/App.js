@@ -1,7 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
-import Header from './components/header';
 import MeetingAgendaPreview from './components/preview';
 import './layout.scss';
 
@@ -9,14 +8,26 @@ import './layout.scss';
 const Footer = styled.footer`
   padding: 4rem;
   text-align: center;
+  p {
+    color: #5a5a5a;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
   a {
-    color: #007bff;
+    font-weight: 600;
     display: inline-block;
-    margin: .5rem;
-    font-size: 1.5rem;
+    color: #aaa;
+    margin: 0 1rem;
+    font-size: 1rem;
     text-decoration: none;
+    border: 1px solid rgba(0,0,0, 0.08);
+    padding: 0.5rem 1rem;
+    transition: all 300ms linear;
+    background-color: #fff;
+    box-shadow: rgba(0,0,0, 0.02) 0 0.4rem 1;
     &:hover {
-      border-bottom: 1px solid;
+      color: #5a5a5a;
+      border-color: #5a5a5a;
     }
   }
   @media print {
@@ -55,9 +66,9 @@ function App() {
           </Helmet>
           <MeetingAgendaPreview />
           <Footer>
-            <p>Made with <Love /> in Nepal</p>
-            <a target="_new" href="http://sarozpoddar.com.np">sarozpoddar.com.np</a>
-            <a target="_new" href="https://github.com/saroz">github(@saroz)</a>
+            <p>Made with <Love /> in Nepal.</p>
+            <a target="blank" href="http://sarozpoddar.com.np">sarozpoddar.com.np</a>
+            <a target="blank" href="https://github.com/saroz">github</a>
 
           </Footer>
       </div>

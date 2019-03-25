@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import localforage from 'localforage';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import logo from '../toastmasters-logo.png';
 import move from '../icons/move.svg';
 import remove from '../icons/remove.svg';
@@ -9,14 +9,7 @@ import add from '../icons/add.svg';
 import print from '../icons/print.svg';
 import save from '../icons/save.svg';
 
-const GlobaStyles = createGlobalStyle`
-    body {
-        background-color: rgba(226, 244, 255, 0.4);
-    }
-`;
-const Main = styled.main`
-    padding-top: 10rem;
-`;
+const Main = styled.main``;
 const AgendaActionButtons = styled.div.attrs({ className: 'agenda-actionButtons' })``;
 const Button = styled.button.attrs({ className: 'btn' })``;
 
@@ -182,7 +175,6 @@ const AgendaContent = styled.div``;
 function MeetingAgendaPreview ({ className }) {
 
     const [ loading, setLoading ] = useState(false);
-    const [ scrolled, setScrolled ] = useState(false);
     // Executive Team
     const [ meetingBasic, setmeetingBasic ] = useState({
         clubName: '',
@@ -295,20 +287,8 @@ function MeetingAgendaPreview ({ className }) {
         e.preventDefault();
     }
 
-    // Handel scroll for button
-    const handleScroll = () => {
-        const lastScrollY = window.scrollY;
-        const scrolled = document.getElementById('a-buttons').offsetTop;
-        if (lastScrollY > scrolled) {
-            setScrolled(true);
-        } else {
-            setScrolled(false);
-        }
-      };
-
     // Fetch MeetingBasicInfo data
     useEffect(() => {
-        window.addEventListener('scroll', handleScroll);
         localforage.config({
             name: 'toastmaste_saroz-offline'
         });
@@ -328,8 +308,7 @@ function MeetingAgendaPreview ({ className }) {
 
     return (
         <Main>
-            <GlobaStyles />
-            <SaveDataWrap id="a-buttons" className={`buttons ${scrolled ? 'yep' : ''}`}>
+            <SaveDataWrap id="a-buttons" className="buttons">
                 <Button className="bg-primary btn-print" onClick={printMyAgenda}>
                     <img src={print} alt="Print" />
                     <span>Print</span>
