@@ -3,6 +3,10 @@ import PropTypes from 'prop-types';
 import localforage from 'localforage';
 import styled from 'styled-components';
 import logo from '../toastmasters-logo.png';
+import move from '../icons/move.svg';
+import remove from '../icons/remove.svg';
+import add from '../icons/add.svg';
+
 const Main = styled.main``;
 const AgendaActionButtons = styled.div.attrs({ className: 'agenda-actionButtons' })``;
 const Button = styled.button.attrs({ className: 'btn' })``;
@@ -465,13 +469,19 @@ function MeetingAgendaPreview ({ className }) {
                             { meetingAgenda.map(agenda => 
                                 <AgendaItem className="agenda" key={ agenda.id }>
                                     <AgendaActionButtons>
-                                        { agenda.id !== 1 && (
+                                        { meetingAgenda.length > 1 && (
                                             <>
-                                                <span className="action action-reorder">&nbsp;</span>
-                                                <span onClick={ (e) => removeAgenda(e, agenda.id) } className="action action-remove">&nbsp;</span>
+                                                <span data-title="Re-order" className="action action-reorder">
+                                                    <img src={move} alt="Re-order"/>
+                                                </span>
+                                                <span data-title="Remove" onClick={ (e) => removeAgenda(e, agenda.id) } className="action action-remove">
+                                                    <img src={remove} alt="Re-order"/>
+                                                </span>
                                             </>
                                         )}
-                                        <span onClick={addNewAgenda} className="action action-add">&nbsp;</span>
+                                        <span data-title="Add" onClick={addNewAgenda} className="action action-add">
+                                            <img src={add} alt="Re-order"/>
+                                        </span>
                                     </AgendaActionButtons>
 
                                     <AgendaItemTitle>

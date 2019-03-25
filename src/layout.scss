@@ -168,6 +168,15 @@ blockquote {
       border-radius: .4rem;
       margin-left: 1rem;
       cursor: pointer;
+      position: relative;
+      display: flex;
+      font-size: 0;
+      img {
+        display: block;
+        width: 1rem;
+        margin: 0 auto;
+        align-self: center;
+      }
       &-remove {
         background-color: #DB0000; 
       }
@@ -177,6 +186,9 @@ blockquote {
       }
       &-add {
         background-color: #00D664;
+        img {
+          width: 1.2rem;
+        }
       }
     }  
   }
@@ -300,6 +312,7 @@ blockquote {
   transition: .1s background linear;
   box-sizing: border-box;
   font-weight: inherit;
+  box-shadow: none;
   &:hover {
     background-color: #fafafa;
   }
