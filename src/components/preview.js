@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import localforage from 'localforage';
-import styled from 'styled-components';
+import styled, { createGlobalStyle } from 'styled-components';
 import logo from '../toastmasters-logo.png';
 import move from '../icons/move.svg';
 import remove from '../icons/remove.svg';
@@ -9,7 +9,14 @@ import add from '../icons/add.svg';
 import print from '../icons/print.svg';
 import save from '../icons/save.svg';
 
-const Main = styled.main``;
+const GlobaStyles = createGlobalStyle`
+    body {
+        background-color: rgba(226, 244, 255, 0.4);
+    }
+`;
+const Main = styled.main`
+    padding-top: 10rem;
+`;
 const AgendaActionButtons = styled.div.attrs({ className: 'agenda-actionButtons' })``;
 const Button = styled.button.attrs({ className: 'btn' })``;
 
@@ -22,8 +29,7 @@ const AgendaLivePreview = styled.section`
     margin: 0 auto;
     min-height: 168.3779527559rem;
     width: 119.0551181102rem;
-    box-shadow: rgba(0,0,0,.3) 0.4rem 0.7rem 9.3rem 0.3rem;
-    margin-top: 10rem;
+    box-shadow: rgba(0,0,0,.1) 0.4rem 0.7rem 9.3rem 0.3rem;
 `;
 
 const PreviewIn = styled.div`
@@ -289,6 +295,7 @@ function MeetingAgendaPreview ({ className }) {
         e.preventDefault();
     }
 
+    // Handel scroll for button
     const handleScroll = () => {
         const lastScrollY = window.scrollY;
         const scrolled = document.getElementById('a-buttons').offsetTop;
@@ -321,6 +328,7 @@ function MeetingAgendaPreview ({ className }) {
 
     return (
         <Main>
+            <GlobaStyles />
             <SaveDataWrap id="a-buttons" className={`buttons ${scrolled ? 'yep' : ''}`}>
                 <Button className="bg-primary btn-print" onClick={printMyAgenda}>
                     <img src={print} alt="Print" />
