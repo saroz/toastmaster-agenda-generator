@@ -53,7 +53,6 @@ function App() {
               <title>Generate Toastmasters Club Meeting Agenda for Free, No Signup Required</title>
               <meta name="description" content="Generate Toastmasters Club Meeting Agenda for Free, No Signup Required" />
           </Helmet>
-          <Header siteTitle="CMA" />
           <MeetingAgendaPreview />
           <Footer>
             <p>Made with <Love /> in Nepal</p>

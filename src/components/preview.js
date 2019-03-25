@@ -6,6 +6,8 @@ import logo from '../toastmasters-logo.png';
 import move from '../icons/move.svg';
 import remove from '../icons/remove.svg';
 import add from '../icons/add.svg';
+import print from '../icons/print.svg';
+import save from '../icons/save.svg';
 
 const Main = styled.main``;
 const AgendaActionButtons = styled.div.attrs({ className: 'agenda-actionButtons' })``;
@@ -174,6 +176,7 @@ const AgendaContent = styled.div``;
 function MeetingAgendaPreview ({ className }) {
 
     const [ loading, setLoading ] = useState(false);
+    const [ scrolled, setScrolled ] = useState(false);
     // Executive Team
     const [ meetingBasic, setmeetingBasic ] = useState({
         clubName: '',
@@ -286,8 +289,19 @@ function MeetingAgendaPreview ({ className }) {
         e.preventDefault();
     }
 
+    const handleScroll = () => {
+        const lastScrollY = window.scrollY;
+        const scrolled = document.getElementById('a-buttons').offsetTop;
+        if (lastScrollY > scrolled) {
+            setScrolled(true);
+        } else {
+            setScrolled(false);
+        }
+      };
+
     // Fetch MeetingBasicInfo data
     useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
         localforage.config({
             name: 'toastmaste_saroz-offline'
         });
@@ -303,16 +317,19 @@ function MeetingAgendaPreview ({ className }) {
 
       const printMyAgenda = () => {
         window.print();
-      }
+      }    
 
     return (
         <Main>
-            <SaveDataWrap className="buttons">
+            <SaveDataWrap id="a-buttons" className={`buttons ${scrolled ? 'yep' : ''}`}>
                 <Button className="bg-primary btn-print" onClick={printMyAgenda}>
-                    <i className="fa fa-print"></i>
+                    <img src={print} alt="Print" />
                     <span>Print</span>
                 </Button>
-                <Button onClick={saveData} type="button">Save Agenda</Button>
+                <Button className="btn-save" onClick={saveData} type="button">
+                    <img src={save} alt="Save" />
+                    <span>Save Agenda</span>
+                </Button>
                 {loading && <i className="fa fa-spinner fa-spin" />}
             </SaveDataWrap>
             <AgendaLivePreview className={ `${ className } print-preview` }>

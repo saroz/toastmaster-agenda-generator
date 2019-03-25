@@ -275,7 +275,7 @@ blockquote {
       cursor: pointer;
       transition: all 300ms linear;
       &:hover {
-        background: rgba(0, 123, 255, 0.5 );
+        background: rgba(160, 203, 250, 0.5);
         box-shadow: rgba(0, 123, 255, 0.2 ) 0 .4rem .8rem;
         color: #fff;
       }
@@ -285,13 +285,27 @@ blockquote {
 
 .buttons {
   position: fixed;
-  background-color: #fff;
-  padding: 2rem;
-  transform: translateX(-50%);
-  box-shadow: #eee 0 0 0 1px;
-  top: 8em;
   left: 50%;
+  transform: translate(-50%, 2rem);
+  margin: 0 auto;
+  top: 0;
   z-index: 1090;
+  display: flex;
+  justify-content: center;
+  width: 119.0551181102rem;
+  transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  &.yep {
+    transform: translate(-50%, 0);
+    box-shadow: rgba(0 ,0, 0, 0.1) 0 1rem 2.5rem;
+    .btn-print {
+      width: 50%;
+      border-radius: 0;
+    }
+    .btn-save {
+      width: 50%;
+      border-radius: 0;
+    }
+  }
   @media print {
     display: none;
   }
@@ -299,17 +313,48 @@ blockquote {
 
 .btn {
   border: none;
-  height: 5rem;
+  height: 6rem;
   cursor: pointer;
   font-size: 1.2rem;
   font-weight: 700;
-  margin: 0 1rem;
-  padding: 0 2rem;
-  border-radius: 0.4rem;
-  background-color: #007bff;
+  padding: 0 3rem;
+  background-color: #192027;
   color: $white;
+  display: block;
+
+  position: relative;
+  text-transform: uppercase;
+  text-align: left;
+  transition: all 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  span {
+    display: block;
+    padding-left: 1.5rem;
+
+  }
+  img {
+    width: 2.5rem;
+  }
+  &-print {
+    background-color: #192027;
+    width: 14rem;
+    box-shadow: inset rgba(255, 255, 255, 0.1) -1px 0 0;
+  }
+  &-save {
+    width: 20rem;
+    img {
+      top: 1.5rem;
+      width: 2.8rem;
+    }  
+  }
+  &:hover {
+    background-color: #007bff;
+  }
   &:focus {
-    outline: 2px solid transparent;
+    outline: 0 solid transparent;
   }
 }
 

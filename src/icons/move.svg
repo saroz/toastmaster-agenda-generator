@@ -1,6 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
-  <g id="move" transform="translate(-8 -6)">
-    <path id="Path_2" data-name="Path 2" d="M7,0H7l5,4H2Z" transform="translate(6 6)" fill="#fff"/>
-    <path id="Path_1" data-name="Path 1" d="M2,0H12L7,4H7Z" transform="translate(6 12)" fill="#fff"/>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#fff"><path d="M5 0l5 4H0zM0 6h10l-5 4z"/></svg>
