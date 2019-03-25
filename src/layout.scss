@@ -283,16 +283,29 @@ blockquote {
   }
 }
 
+.buttons {
+  position: fixed;
+  background-color: #fff;
+  padding: 2rem;
+  transform: translateX(-50%);
+  box-shadow: #eee 0 0 0 1px;
+  top: 8em;
+  left: 50%;
+  z-index: 1090;
+  @media print {
+    display: none;
+  }
+}
 
 .btn {
   border: none;
-  height: 4rem;
+  height: 5rem;
   cursor: pointer;
-  text-transform: uppercase;
   font-size: 1.2rem;
   font-weight: 700;
-  margin: 0 2rem;
+  margin: 0 1rem;
   padding: 0 2rem;
+  border-radius: 0.4rem;
   background-color: #007bff;
   color: $white;
   &:focus {

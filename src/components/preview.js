@@ -165,14 +165,7 @@ const ClubMeetingTheme = styled.p`
     }
 `;
 
-const SaveDataWrap = styled.div`
-  position: fixed;
-  top: 10rem;
-  @media print {
-    display: none;
-  }
-
-`;
+const SaveDataWrap = styled.div``;
 
 const AgendaTitle = styled.h4``;
 const AgendaTM = styled.span``;
@@ -314,12 +307,12 @@ function MeetingAgendaPreview ({ className }) {
 
     return (
         <Main>
-            <SaveDataWrap>
+            <SaveDataWrap className="buttons">
                 <Button className="bg-primary btn-print" onClick={printMyAgenda}>
                     <i className="fa fa-print"></i>
                     <span>Print</span>
                 </Button>
-                <Button onClick={saveData} type="button">Save my meeting agenda</Button>
+                <Button onClick={saveData} type="button">Save Agenda</Button>
                 {loading && <i className="fa fa-spinner fa-spin" />}
             </SaveDataWrap>
             <AgendaLivePreview className={ `${ className } print-preview` }>
