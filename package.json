@@ -46,7 +46,6 @@
     "not op_mini all"
   ],
   "dependencies": {
-    "draft-js": "^0.10.5",
     "gh-pages": "^2.0.1",
     "localforage": "^1.7.3",
     "node-sass": "^4.11.0",
@@ -54,7 +53,6 @@
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-helmet": "^5.2.0",
-    "react-markdown": "^4.0.6",
     "react-scripts": "^2.1.5",
     "react-simplemde-editor": "^4.0.0",
     "styled-components": "^4.1.3"

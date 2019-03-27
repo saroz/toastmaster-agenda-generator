@@ -9,6 +9,9 @@ import add from '../icons/add.svg';
 import print from '../icons/print.svg';
 import save from '../icons/save.svg';
 
+import SimpleMDE from 'react-simplemde-editor';
+import 'easymde/dist/easymde.min.css';
+
 const Main = styled.main``;
 const AgendaActionButtons = styled.div.attrs({ className: 'agenda-actionButtons' })``;
 const Button = styled.button.attrs({ className: 'btn' })``;
@@ -202,9 +205,21 @@ function MeetingAgendaPreview ({ className }) {
             title: '',
             toastmaster: '',
             startAt: '',
-            details: []
+            details: ''
         }
     ]);
+
+    // Add New MeetingAgenda Item
+    const addNewAgenda = () => {
+        setMeetingAgenda([
+            ...meetingAgenda, {
+            id: meetingAgenda.length + 1,
+            title: '',
+            toastmaster: '',
+            startAt: '',
+            details: '' }
+        ]);
+    };
 
     // Update MeetingBasicInfo data on Change
     const updateMeetingBasicInfo = (e) => {
@@ -216,11 +231,10 @@ function MeetingAgendaPreview ({ className }) {
     // Update MeetingAgenda data on Change
     const updateMeetingAgenda = (e, id) => {
         let newMeetingAgenda = [];
-        // if( typeof e === 'string') {
-        if( e.target.getAttribute('id') === 'details') {
+        if( typeof e === 'string') {
             newMeetingAgenda = meetingAgenda.map(agenda => {
                 if (parseInt(agenda.id, 10) !== id) return agenda;
-                return { ...agenda, 'details': e.target.innerHTML };
+                return { ...agenda, 'details': e };
             });
         } else {
             newMeetingAgenda = meetingAgenda.map(agenda => {
@@ -231,18 +245,6 @@ function MeetingAgendaPreview ({ className }) {
         setMeetingAgenda(newMeetingAgenda);
     }
 
-    // Add New MeetingAgenda Item
-    const addNewAgenda = () => {
-        setMeetingAgenda([
-            ...meetingAgenda, {
-            id: meetingAgenda.length + 1,
-            title: '',
-            toastmaster: '',
-            startAt: '',
-            details: []}
-        ]);
-        console.log(meetingAgenda);
-    };
 
     // Remove Current MeetingAgenda Item
     const removeAgenda = (e, id) => {
@@ -253,22 +255,6 @@ function MeetingAgendaPreview ({ className }) {
         }
         return false;
     }
-
-    const addContentType = (e, id) => {
-        console.log('PT');
-    }
-    const addParagraph = (e, id) => {
-        console.log('P added');
-    }
-    const addWOD = (e, id) => {
-        console.log('WOD added');
-    }
-    const addTable = (e, id) => {
-        console.log('Table added');
-    }
-    
-
-
     
     // Save MeetingBasicInfo data on LocalStorage
     const saveData = (e) => {
@@ -302,6 +288,9 @@ function MeetingAgendaPreview ({ className }) {
         return;
       }, []);  
 
+      const getInstance = instance => {
+        instance.togglePreview();
+      };
       const printMyAgenda = () => {
         window.print();
       }    
@@ -500,13 +489,14 @@ function MeetingAgendaPreview ({ className }) {
                                         </AgendaTM>
                                     </AgendaItemTitle>
                                     <AgendaContent className="agenda-content">
-                                        <div className="mark-down">
-                                            <span className="d-block">Add agend detail </span>
-                                            <span onClick={addContentType} data-type="pt" className="action">P / T</span>
-                                            <span onClick={addParagraph} className="action">P</span>
-                                            <span onClick={addWOD} className="action">WOD</span>
-                                            <span onClick={addTable} className="action">Table</span>
-                                        </div>
+                                        <SimpleMDE
+                                            getMdeInstance= { getInstance }
+                                            id={ `details_${ agenda.id }` }
+                                            value={ agenda.details }
+                                            onChange={ (e) => updateMeetingAgenda(e, agenda.id) }
+                                            options={{ autosave: false, autofocus: true, spellChecker: false, status: false,
+                                                toolbar: [ 'bold', 'quote', 'table', '|', 'preview' ]
+                                            }} />
                                     </AgendaContent>
                                 </AgendaItem>
                             )}
