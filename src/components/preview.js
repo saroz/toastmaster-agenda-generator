@@ -283,7 +283,7 @@ function MeetingAgendaPreview ({ className }) {
                                 placeholder="We meet every Wednesday from 6:00pm to 7:00pm at XYZ Restaurant, Kathmandu, Nepal."
                                 required />
                             </p>
-                            <TMInternational>Toastmasters International <a href="https://www.oursite.org">www.oursite.org</a></TMInternational>
+                            <TMInternational>Toastmasters International <a rel="noopener" target="blank" href="https://www.toastmasters.org/">www.toastmasters.org</a></TMInternational>
                             <p className="lead">
                                 <span className="d-block title-bold">Club Mission</span>
                                 <Textarea

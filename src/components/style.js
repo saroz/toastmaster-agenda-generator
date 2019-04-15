@@ -214,7 +214,7 @@ export const ClubMeetingTheme = styled.p`
 export const LoaderIndicator = styled.i`
     position: absolute;
     left: 110%;
-    top: 2rem;
+    top: 0;
     color: #007bff;
     font-size: 2rem !important;
 `;
@@ -222,4 +222,7 @@ export const LoaderIndicator = styled.i`
 export const TMInternational = styled.p`
     padding: 0.2rem 0.6rem;
     margin-bottom: 3rem;
+    @media print {
+        padding: 0;
+    }
 `;

@@ -9,25 +9,23 @@ const Footer = styled.footer`
   padding: 4rem;
   text-align: center;
   p {
+    font-size: 1rem;
     color: #5a5a5a;
-    font-weight: 600;
-    margin-bottom: 1.5rem;
+
+    font-weight: bold;
+    margin-bottom: .6rem;
   }
   a {
-    font-weight: 600;
     display: inline-block;
-    color: #aaa;
+    color: #007bff;
     margin: 0 1rem;
     font-size: 1rem;
     text-decoration: none;
-    border: 1px solid rgba(0,0,0, 0.08);
-    padding: 0.5rem 1rem;
+    border-bottom: 1px solid;
+    padding: 0.2rem 0;
     transition: all 300ms linear;
-    background-color: #fff;
-    box-shadow: rgba(0,0,0, 0.02) 0 0.4rem 1;
     &:hover {
-      color: #5a5a5a;
-      border-color: #5a5a5a;
+      color: #000;
     }
   }
   @media print {
@@ -36,23 +34,23 @@ const Footer = styled.footer`
 `;
 const Love = styled.span`
   background-color: red;
-  height: 1rem;
+  height: .8rem;
+  width: .8rem;
   transform: rotate(-45deg);
-  width: 1rem;
   position: relative;
   display: inline-block;
-  margin: .4rem .4rem 0;
+  margin: .2rem .2rem 0;
   &::before,
   &::after {
     content: "";
     background-color: red;
     border-radius: 50%;
-    height: 1rem;
+    height: .8rem;
     position: absolute;
-    width: 1rem;
+    width: .8rem;
   } 
   &::before {
-    top: -0.5rem;
+    top: -0.4rem;
     left: 0;
   }
 `;
@@ -67,7 +65,7 @@ function App() {
           <MeetingAgendaPreview />
           <Footer>
             <p>Made with <Love /> in Nepal.</p>
-            <a target="blank" href="http://sarozpoddar.com.np">sarozpoddar.com.np</a>
+            <a target="blank" href="https://sarozpoddar.com.np">sarozpoddar.com.np</a>
             <a target="blank" href="https://github.com/saroz">github</a>
 
           </Footer>
