@@ -127,18 +127,44 @@ const ClubTitle = styled.h2`
     font-size: 2.5rem;
     color: #003F62;
     margin: 0;
+    position: relative;
     display: inline-block;
+    span {
+        opacity: 0;
+        display: block;
+        padding: 0.2rem 0.6rem;
+        height: 100%;
+        z-index: -1;
+        position: relative;
+    }
     input {
+        position: absolute;
+        z-index: 9;
+        top: 0;
+        width: 100%;
         font-weight: 700;
         &::placeholder {
             color: #003F62;
         }
     }
 `;
-const ClubNumber = styled.span`
+const ClubNumber = styled.p`
+    position: relative;
+    span {
+        opacity: 0;
+        display: block;
+        padding: 0.2rem 0.6rem;
+        height: 100%;
+        z-index: -1;
+        position: relative;
+    }
     font-size: 2.5rem;
     color: #003F62;
     input {
+        z-index: 9;
+        position: absolute;
+        top: 0;
+        width: 100%;
         &::placeholder {
             color: #003F62;
         }
@@ -433,9 +459,11 @@ function MeetingAgendaPreview ({ className }) {
                         <ClubName>
                             <DFlex>
                                 <ClubTitle>
+                                    <span>{meetingBasic.clubName || `Club Name`}</span>
                                     <Field type="text" autoComplete="off" name="clubName" onChange={updateMeetingBasicInfo} value={meetingBasic.clubName} placeholder="Club Name" />
                                 </ClubTitle>
                                 <ClubNumber>
+                                    <span>{meetingBasic.clubNumber || `Club Name`}</span>
                                     <Field type="text" autoComplete="off" name="clubNumber" onChange={updateMeetingBasicInfo} value={meetingBasic.clubNumber} placeholder="Club Number" />
                                 </ClubNumber>
                             </DFlex>
