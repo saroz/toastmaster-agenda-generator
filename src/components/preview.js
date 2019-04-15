@@ -1,7 +1,36 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import localforage from 'localforage';
-import styled from 'styled-components';
+
+import {
+    AgendaLivePreview,
+    PreviewIn,
+    AgendaHeader,
+    TMILogo,
+    AgendaSideBar,
+    AgendaList,
+    Ballots,
+    ClubName,
+    AgendaItem,
+    AgendaItemTitle,
+    DFlex,
+    ClubTitle,
+    ClubNumber,
+    ClubMeetingDate,
+    ClubMeetingTheme,
+    TMInternational,
+    Main,
+    AgendaActionButtons,
+    Button,
+    Field,
+    Textarea,
+    SaveDataWrap,
+    AgendaTitle,
+    AgendaTM,
+    AgendaContent,
+    LoaderIndicator,
+} from './style';
+
 import logo from '../toastmasters-logo.png';
 import move from '../icons/move.svg';
 import remove from '../icons/remove.svg';
@@ -11,200 +40,6 @@ import save from '../icons/save.svg';
 
 import SimpleMDE from 'react-simplemde-editor';
 import 'easymde/dist/easymde.min.css';
-
-const Main = styled.main``;
-const AgendaActionButtons = styled.div.attrs({ className: 'agenda-actionButtons' })``;
-const Button = styled.button.attrs({ className: 'btn' })``;
-
-const Field = styled.input.attrs({ className: 'form-item' })``;
-const Textarea = styled.textarea.attrs({ className: 'form-item' })``;
-
-const AgendaLivePreview = styled.section`
-    background: #fff;
-    font-size: 0;
-    margin: 0 auto;
-    min-height: 168.3779527559rem;
-    width: 119.0551181102rem;
-    box-shadow: rgba(0,0,0,.1) 0.4rem 0.7rem 9.3rem 0.3rem;
-`;
-
-const PreviewIn = styled.div`
-    padding: 5rem;
-    min-height: 168.3779527559rem;
-    display: grid;
-    align-items: start;
-    grid-template-rows: 15rem 1fr 9rem;
-    grid-template-columns: 25% 25% 25% 25%;
-    grid-template-areas:
-    "header header header header"
-    "sidebar main main main"
-    " . footer footer footer";
-`;
-
-const AgendaHeader = styled.header`
-    grid-area: header;
-    display: block;
-    position: relative;
-    .border {
-        &-header {
-            border-bottom: 15rem solid #003F62;
-            &-thin {
-                border-bottom: .4rem solid #A3B6B8;
-            }
-        }
-        &-white {
-            border-bottom: 0.2rem solid #fff;
-        }
-        &-light {
-            border-bottom: 0.2rem solid #A3B6B8;
-        }
-    }
-`;
-
-const TMILogo = styled.div`
-    width: 18rem;
-    position: absolute;
-    left: 12rem;
-    top: 50.5%;
-`;
-
-const AgendaSideBar = styled.aside `
-    grid-area: sidebar;
-    height: 100%;
-    padding-top: 12rem;
-    box-sizing: border-box;
-    position: relative;
-    .inWrap {
-        border-right: 0.2rem solid #004165;
-        height: 100%;
-        padding-right: 4rem;
-    }
-`;
-
-const AgendaList = styled.div`
-    grid-area: main;
-    padding-left: 3rem;
-    height: 100%;
-`;
-
-const Ballots = styled.div`;
-    grid-area: footer;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 9rem;
-    grid-gap: 3rem;
-    padding-left: 5rem;
-    span {
-        font-size: 1rem;
-        padding: 1.5rem;
-        border: 1px dotted #004165;
-    }
-`;
-
-const ClubName = styled.div`
-    text-align: center;
-    margin: 1.5rem 0 1rem;
-    line-height: 1.2;
-    small {
-        font-size: 1.5rem;
-        color: red;
-    }
-`;
-const AgendaItem = styled.article`
-    font-size: 1.5rem;
-`;
-
-const AgendaItemTitle = styled.header`
-    display: flex;
-    margin-bottom: 0;
-`;
-
-const DFlex = styled.div`
-    display: flex;
-    justify-content: center;
-`;
-const ClubTitle = styled.h2`
-    font-size: 2.5rem;
-    color: #003F62;
-    margin: 0;
-    position: relative;
-    display: inline-block;
-    span {
-        opacity: 0;
-        display: block;
-        padding: 0.2rem 0.6rem;
-        height: 100%;
-        z-index: -1;
-        position: relative;
-    }
-    input {
-        position: absolute;
-        z-index: 9;
-        top: 0;
-        width: 100%;
-        font-weight: 700;
-        &::placeholder {
-            color: #003F62;
-        }
-    }
-`;
-const ClubNumber = styled.p`
-    position: relative;
-    span {
-        opacity: 0;
-        display: block;
-        padding: 0.2rem 0.6rem;
-        height: 100%;
-        z-index: -1;
-        position: relative;
-    }
-    font-size: 2.5rem;
-    color: #003F62;
-    input {
-        z-index: 9;
-        position: absolute;
-        top: 0;
-        width: 100%;
-        &::placeholder {
-            color: #003F62;
-        }
-    }
-`;
-
-const ClubMeetingDate = styled.time`
-    font-size: 1.5rem;
-    display: block;
-    input {
-        margin: 0 auto;
-        text-align: center;
-        max-width: 20rem;
-    }
-`;
-
-const ClubMeetingTheme = styled.p`
-    font-size: 1.5rem;
-    display: block;
-    color: #003F62;
-    input {
-        margin: 0 auto;
-        text-align: center;
-        max-width: 50rem;
-        &::placeholder {
-            color: #003F62;
-        }
-    }
-`;
-
-const TMInternational = styled.p`
-    padding: 0.2rem 0.6rem;
-    margin-bottom: 3rem;
-`;
-
-const SaveDataWrap = styled.div``;
-
-const AgendaTitle = styled.h4``;
-const AgendaTM = styled.span``;
-const AgendaContent = styled.div``;
 
 function MeetingAgendaPreview ({ className }) {
 
@@ -336,8 +171,8 @@ function MeetingAgendaPreview ({ className }) {
                 <Button className="btn-save" onClick={saveData} type="button">
                     <img src={save} alt="Save" />
                     <span>Save Agenda</span>
-                </Button>
-                {loading && <i className="fa fa-spinner fa-spin" />}
+                    {loading && <LoaderIndicator className="fa fa-spinner fa-spin" />}
+                </Button>                
             </SaveDataWrap>
             <AgendaLivePreview className={ `${ className } print-preview` }>
                 <PreviewIn>
@@ -362,7 +197,7 @@ function MeetingAgendaPreview ({ className }) {
                                     name="president"
                                     onChange={updateMeetingBasicInfo}
                                     value={meetingBasic.president}
-                                    placeholder="Club president name"/>
+                                    placeholder="Club President Name"/>
                                 </dd>
 
                                 <dt>VP Education</dt>
@@ -373,7 +208,7 @@ function MeetingAgendaPreview ({ className }) {
                                     name="vPEducation"
                                     onChange={updateMeetingBasicInfo}
                                     value={meetingBasic.vPEducation}
-                                    placeholder="Club VP Education name" />
+                                    placeholder="Club VP Education Name" />
                                 </dd>
                                 <dt>VP Membership</dt>
                                 <dd>
@@ -383,7 +218,7 @@ function MeetingAgendaPreview ({ className }) {
                                     name="vPMembership"
                                     onChange={updateMeetingBasicInfo}
                                     value={meetingBasic.vPMembership}
-                                    placeholder="Club VP Membership name" />
+                                    placeholder="Club VP Membership Name" />
                                 </dd>
                                 
                                 <dt>VP Public Relations</dt>
@@ -394,7 +229,7 @@ function MeetingAgendaPreview ({ className }) {
                                     name="vPRelation"
                                     onChange={updateMeetingBasicInfo}
                                     value={meetingBasic.vPRelation}
-                                    placeholder="Club VP Public Relations name" />
+                                    placeholder="Club VP Public Relations Name" />
                                 </dd>
 
                                 <dt>Secretary</dt>
@@ -405,7 +240,7 @@ function MeetingAgendaPreview ({ className }) {
                                     name="secretary"
                                     onChange={updateMeetingBasicInfo}
                                     value={meetingBasic.secretary}
-                                    placeholder="Club Secretary name" />
+                                    placeholder="Club Secretary Name" />
                                 </dd>
 
                                 <dt>Treasurer</dt>
@@ -416,7 +251,7 @@ function MeetingAgendaPreview ({ className }) {
                                     name="treasurer"
                                     onChange={updateMeetingBasicInfo}
                                     value={meetingBasic.treasurer}
-                                    placeholder="Club Treasurer name" />
+                                    placeholder="Club Treasurer Name" />
                                 </dd>
 
                                 <dt>Sergeant-At-Arms</dt>
@@ -427,7 +262,7 @@ function MeetingAgendaPreview ({ className }) {
                                     name="sergeant"
                                     onChange={updateMeetingBasicInfo}
                                     value={meetingBasic.sergeant}
-                                    placeholder="Club Sergeant-At-Arms name" />
+                                    placeholder="Club Sergeant-At-Arms Name" />
                                 </dd>
                                 <dt>Past President</dt>
                                 <dd>
@@ -437,7 +272,7 @@ function MeetingAgendaPreview ({ className }) {
                                     name="pastPresident"
                                     onChange={updateMeetingBasicInfo}
                                     value={meetingBasic.pastpresident}
-                                    placeholder="Past President" />
+                                    placeholder="Past President Name" />
                                 </dd>
                             </dl>
                             <p className="lead d-block">
