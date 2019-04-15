@@ -362,16 +362,16 @@ function MeetingAgendaPreview ({ className }) {
                                     <AgendaContent className="agenda-content">
                                         <DFlex>
                                             <AgendaDesc>
-                                                <Field type="text" name="details[desc]" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Chair’s welcome" value={agenda.details} />
+                                                <Field type="text" name="details_desc" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Chair’s welcome" value={agenda.details} />
                                             </AgendaDesc>
                                             <AgendaTM className="agenda-TM">
-                                                <Field type="text" name="details[toastmaster]" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Toastmaster name" value={agenda.details} />
+                                                <Field type="text" name="details_toastmaster]" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Toastmaster name" value={agenda.details} />
                                             </AgendaTM>
                                         </DFlex>
                                         <AgendaDesc className="full">
                                             <Textarea
                                                 className="small"
-                                                name="details"
+                                                name="details_short"
                                                 value={agenda.details}
                                                 onChange={(e) => updateMeetingAgenda(e, agenda.id)}
                                                 placeholder="Short description"/>
@@ -393,20 +393,20 @@ function MeetingAgendaPreview ({ className }) {
                                                         <Field type="text" name="details_td_1" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Speaker name" value={agenda.details} />
                                                     </td>
                                                     <td>
-                                                        <Field type="text" name="details_td_1" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="{Value}" value={agenda.details} />
+                                                        <Field type="text" name="details_td_2" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="{Value}" value={agenda.details} />
                                                     </td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                         <Blockquote>
                                             <AgendaDesc className="full">
-                                                <span>Word of the Day: </span><Field type="text" name="details_td_1" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Word" value={agenda.details} />
+                                                <span>Word of the Day: </span><Field type="text" name="details_wod" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Ebullient (adj)" value={agenda.details} />
                                             </AgendaDesc>
                                             <AgendaDesc className="full">
-                                                <span>Meaning: </span><Field type="text" name="details_td_1" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="WOD meaning" value={agenda.details} />
+                                                <span>Meaning: </span><Field type="text" name="details_meaning" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="having or showing liveliness and enthusiasm " value={agenda.details} />
                                                 </AgendaDesc>
                                             <AgendaDesc className="full">
-                                                <span>Usages: </span><Field type="text" name="details_td_1" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="WOD usages" value={agenda.details} />
+                                                <span>Usages: </span><Field type="text" name="details_usages" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="She sounded ebullient and happy." value={agenda.details} />
                                             </AgendaDesc>
                                         </Blockquote>
                                         
