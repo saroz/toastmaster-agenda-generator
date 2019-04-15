@@ -195,6 +195,11 @@ const ClubMeetingTheme = styled.p`
     }
 `;
 
+const TMInternational = styled.p`
+    padding: 0.2rem 0.6rem;
+    margin-bottom: 3rem;
+`;
+
 const SaveDataWrap = styled.div``;
 
 const AgendaTitle = styled.h4``;
@@ -443,6 +448,7 @@ function MeetingAgendaPreview ({ className }) {
                                 placeholder="We meet every Wednesday from 6:00pm to 7:00pm at XYZ Restaurant, Kathmandu, Nepal."
                                 required />
                             </p>
+                            <TMInternational>Toastmasters International <a href="https://www.oursite.org">www.oursite.org</a></TMInternational>
                             <p className="lead">
                                 <span className="d-block title-bold">Club Mission</span>
                                 <Textarea
@@ -463,7 +469,7 @@ function MeetingAgendaPreview ({ className }) {
                                     <Field type="text" autoComplete="off" name="clubName" onChange={updateMeetingBasicInfo} value={meetingBasic.clubName} placeholder="Club Name" />
                                 </ClubTitle>
                                 <ClubNumber>
-                                    <span>{meetingBasic.clubNumber || `Club Name`}</span>
+                                    <span>{meetingBasic.clubNumber || `Club Number`}</span>
                                     <Field type="text" autoComplete="off" name="clubNumber" onChange={updateMeetingBasicInfo} value={meetingBasic.clubNumber} placeholder="Club Number" />
                                 </ClubNumber>
                             </DFlex>
