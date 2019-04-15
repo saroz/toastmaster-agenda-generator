@@ -29,6 +29,8 @@ import {
     AgendaTM,
     AgendaContent,
     LoaderIndicator,
+    AgendaDesc,
+    Blockquote,
 } from './style';
 
 import logo from '../toastmasters-logo.png';
@@ -254,7 +256,7 @@ function MeetingAgendaPreview ({ className }) {
                                     placeholder="Club Treasurer Name" />
                                 </dd>
 
-                                <dt>Sergeant-At-Arms</dt>
+                                <dt>Sergeant at Arms</dt>
                                 <dd>
                                     <Field
                                     type="text"
@@ -262,7 +264,7 @@ function MeetingAgendaPreview ({ className }) {
                                     name="sergeant"
                                     onChange={updateMeetingBasicInfo}
                                     value={meetingBasic.sergeant}
-                                    placeholder="Club Sergeant-At-Arms Name" />
+                                    placeholder="Club Sergeant at Arms Name" />
                                 </dd>
                                 <dt>Past President</dt>
                                 <dd>
@@ -351,21 +353,71 @@ function MeetingAgendaPreview ({ className }) {
                                             <Field type="text" name="startAt" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="6:00" value={agenda.startAt} />
                                         </time>
                                         <AgendaTitle className="agenda-title">
-                                            <Field type="text" name="title" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="SAA Calls Meeting to Order" value={agenda.title} />
+                                            <Field type="text" name="title" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Chair Calls Meeting to Order" value={agenda.title} />
                                         </AgendaTitle>
                                         <AgendaTM className="agenda-TM">
                                             <Field type="text" name="toastmaster" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Toastmaster name" value={agenda.toastmaster} />
                                         </AgendaTM>
                                     </AgendaItemTitle>
                                     <AgendaContent className="agenda-content">
-                                        <SimpleMDE
+                                        <DFlex>
+                                            <AgendaDesc>
+                                                <Field type="text" name="details[desc]" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Chair’s welcome" value={agenda.details} />
+                                            </AgendaDesc>
+                                            <AgendaTM className="agenda-TM">
+                                                <Field type="text" name="details[toastmaster]" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Toastmaster name" value={agenda.details} />
+                                            </AgendaTM>
+                                        </DFlex>
+                                        <AgendaDesc className="full">
+                                            <Textarea
+                                                className="small"
+                                                name="details"
+                                                value={agenda.details}
+                                                onChange={(e) => updateMeetingAgenda(e, agenda.id)}
+                                                placeholder="Short description"/>
+                                        </AgendaDesc>
+                                        <table>
+                                            <thead>
+                                                <tr>
+                                                    <td>
+                                                        <Field type="text" name="details_th_1" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Speaker" value={agenda.details} />
+                                                    </td>
+                                                    <td>
+                                                        <Field type="text" name="details_th_2" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="{Title}" value={agenda.details} />
+                                                    </td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <Field type="text" name="details_td_1" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Speaker name" value={agenda.details} />
+                                                    </td>
+                                                    <td>
+                                                        <Field type="text" name="details_td_1" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="{Value}" value={agenda.details} />
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <Blockquote>
+                                            <AgendaDesc className="full">
+                                                <span>Word of the Day: </span><Field type="text" name="details_td_1" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Word" value={agenda.details} />
+                                            </AgendaDesc>
+                                            <AgendaDesc className="full">
+                                                <span>Meaning: </span><Field type="text" name="details_td_1" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="WOD meaning" value={agenda.details} />
+                                                </AgendaDesc>
+                                            <AgendaDesc className="full">
+                                                <span>Usages: </span><Field type="text" name="details_td_1" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="WOD usages" value={agenda.details} />
+                                            </AgendaDesc>
+                                        </Blockquote>
+                                        
+                                        {/* <SimpleMDE
                                             getMdeInstance= { getInstance }
                                             id={ `details_${ agenda.id }` }
                                             value={ agenda.details }
                                             onChange={ (e) => updateMeetingAgenda(e, agenda.id) }
                                             options={{ autosave: false, autofocus: true, spellChecker: false, status: false,
                                                 toolbar: [ 'bold', 'quote', 'table', '|', 'preview' ]
-                                            }} />
+                                            }} /> */}
                                     </AgendaContent>
                                 </AgendaItem>
                             )}

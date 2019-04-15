@@ -129,21 +129,6 @@ blockquote ~ table {
       height: 4.5rem;
   }
 }
-blockquote {
-  margin: .125rem 0;
-  border: 1px solid $black;
-  border-left: .375rem solid $black;
-  padding: .875rem;
-  margin-bottom: .625rem;
-  line-height: 1.8;
-  strong {
-    display: block;
-    margin-left: 1rem;
-    max-width: 80%;
-    flex: 0 0 80%;
-  }
-}
-
 
 .agenda {
   margin-bottom: 0;
@@ -219,32 +204,6 @@ blockquote {
       }
     }  
   }
-  &-title {
-    margin: 0;
-    font-size: 1.4rem;
-    max-width: calc(100% - 26rem);
-    flex: 0 0 calc(100% - 26rem);
-  }
-  h4.agenda-title {
-    font-weight: 700;
-  }
-  &-TM {
-    margin-left: auto;
-    font-size: 1.4rem;
-    max-width: 20rem;
-    flex: 0 0 20rem;
-
-    input {
-      text-align: right;
-    }
-  }
-  &-content {
-    margin-left: 6rem;
-    margin-top: 0.6rem;
-    * {
-      font-size: 1.4rem;
-    }
-  }
   @media print {
     &-actionButtons {
       display: none;
@@ -299,7 +258,6 @@ blockquote {
     padding: 0;
   }
   &-sizer {
-    // width: 100%;
     margin: 0;
   }
   &-focused {
@@ -307,7 +265,7 @@ blockquote {
     background-color: #eeeeee;
   }
   &-scroll {
-    min-height: 2rem !important;
+    min-height: 8rem !important;
     padding-bottom: 0;
     width: 100%;
     margin: 0;
@@ -439,6 +397,9 @@ textarea.form-item {
   resize: none;
   width: 100%;
   min-height: 8rem;
+  &.small {
+    min-height: 5rem;    
+  }
   &.large {
     min-height: 20rem;
   }

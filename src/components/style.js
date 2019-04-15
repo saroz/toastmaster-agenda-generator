@@ -10,9 +10,39 @@ export const Button = styled.button.attrs({ className: 'btn' })``;
 export const Field = styled.input.attrs({ className: 'form-item' })``;
 export const Textarea = styled.textarea.attrs({ className: 'form-item' })``;
 
-export const AgendaTitle = styled.h4``;
-export const AgendaTM = styled.span``;
-export const AgendaContent = styled.div``;
+export const AgendaTitle = styled.h4`
+    font-weight: bold;
+    margin: 0;
+    font-size: 1.4rem;
+    max-width: calc(100% - 26rem);
+    flex: 0 0 calc(100% - 26rem);
+`;
+export const AgendaDesc = styled.p`
+    max-width: calc(100% - 26rem);
+    flex: 0 0 calc(100% - 26rem);
+    &.full {
+        max-width: 100%;
+        flex: 0 0 100%;
+    }
+`;
+
+export const AgendaTM = styled.span`
+    margin-left: auto;
+    font-size: 1.4rem;
+    max-width: 20rem;
+    flex: 0 0 20rem;
+
+    input {
+        text-align: right;
+    }
+`;
+export const AgendaContent = styled.div`
+    margin-left: 6rem;
+    margin-top: 0.6rem;
+    * {
+        font-size: 1.4rem;
+    }
+`;
 
 
 export const SaveDataWrap = styled.div`
@@ -226,3 +256,19 @@ export const TMInternational = styled.p`
         padding: 0;
     }
 `;
+export const Blockquote = styled.blockquote`
+    margin: .125rem 0;
+    border: 1px solid #000;
+    padding: .875rem;
+    margin-bottom: .625rem;
+    line-height: 1.8;
+    p {
+        display: flex;
+        flex-direction: row;
+        span {
+            white-space: nowrap;
+            padding-right: 0.5rem;
+        }
+    }
+`;
+

@@ -65,8 +65,8 @@ function App() {
           <MeetingAgendaPreview />
           <Footer>
             <p>Made with <Love /> in Nepal.</p>
-            <a target="blank" href="https://sarozpoddar.com.np">sarozpoddar.com.np</a>
-            <a target="blank" href="https://github.com/saroz">github</a>
+            <a rel="noopener" target="blank" href="https://sarozpoddar.com.np">sarozpoddar.com.np</a>
+            <a rel="noopener" target="blank" href="https://github.com/saroz">github</a>
 
           </Footer>
       </div>
