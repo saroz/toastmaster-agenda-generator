@@ -32,18 +32,19 @@ import {
 } from './style';
 
 import logo from '../toastmasters-logo.png';
-import move from '../icons/move.svg';
 import remove from '../icons/remove.svg';
 import add from '../icons/add.svg';
 import print from '../icons/print.svg';
 import save from '../icons/save.svg';
-
+import viewpreview from '../icons/preview.svg';
 import SimpleMDE from 'react-simplemde-editor';
+import ReactMarkdown from 'react-markdown';
 import 'easymde/dist/easymde.min.css';
 
 function MeetingAgendaPreview ({ className }) {
 
     const [ loading, setLoading ] = useState(false);
+    const [ tab, setTab ] = useState('write');
     // Executive Team
     const [ meetingBasic, setmeetingBasic ] = useState({
         clubName: '',
@@ -126,10 +127,10 @@ function MeetingAgendaPreview ({ className }) {
     const saveData = (e) => {
         setLoading(true);
         localforage.setItem('meeting', meetingBasic).then((value) => {
-            console.log('success');
+            console.log('Successfully Saved');
         }).catch(function(err) { console.log(err) });
         localforage.setItem('agenda', meetingAgenda).then((value) => {
-            console.log('success');
+            console.log('Successfully Saved');
         }).catch(function(err) { console.log(err) });
 
         // Hide Loader
@@ -152,14 +153,28 @@ function MeetingAgendaPreview ({ className }) {
           if (value !== null ) setMeetingAgenda(value)
         });
         return;
-      }, []);  
+    }, []);  
 
-      const getInstance = instance => {
-        instance.togglePreview();
-      };
-      const printMyAgenda = () => {
+    const disableInputs = (elements, check) => {
+        let length = elements.length;
+        while(length--) {
+            elements[length].disabled = check;
+        }
+    }
+
+    const checkPreview = () => {
+        setTab('preview');
+        disableInputs(document.querySelectorAll('.form-item'), true);
+    };
+    const checkWrite = () => {
+        setTab('write')
+        disableInputs(document.querySelectorAll('.form-item'), false);
+    };
+
+    const printMyAgenda = () => {
+        checkPreview();
         window.print();
-      }
+    }
 
     return (
         <Main>
@@ -172,7 +187,11 @@ function MeetingAgendaPreview ({ className }) {
                     <img src={save} alt="Save" />
                     <span>Save Agenda</span>
                     {loading && <LoaderIndicator className="fa fa-spinner fa-spin" />}
-                </Button>                
+                </Button>
+                <Button className="btn-warning" type="button" onClick={tab === 'preview' ? checkWrite : checkPreview}>
+                    <img src={viewpreview} alt="View Preview" />
+                    <span>{tab === 'preview' ? 'Write' : 'Preview'}</span>
+                </Button>
             </SaveDataWrap>
             <AgendaLivePreview className={ `${ className } print-preview` }>
                 <PreviewIn>
@@ -329,17 +348,12 @@ function MeetingAgendaPreview ({ className }) {
                         </ClubName>
                         <div className="agendas-wrap">
                             { meetingAgenda.map(agenda => 
-                                <AgendaItem className="agenda" key={ agenda.id }>
+                                <AgendaItem className={`agenda ${tab === 'write' ? 'hover' : ''}`} key={ agenda.id }>
                                     <AgendaActionButtons>
                                         { meetingAgenda.length > 1 && (
-                                            <>
-                                                <span data-title="Re-order" className="action action-reorder">
-                                                    <img src={move} alt="Re-order"/>
-                                                </span>
                                                 <span data-title="Remove" onClick={ (e) => removeAgenda(e, agenda.id) } className="action action-remove">
                                                     <img src={remove} alt="Re-order"/>
                                                 </span>
-                                            </>
                                         )}
                                         <span data-title="Add" onClick={addNewAgenda} className="action action-add">
                                             <img src={add} alt="Re-order"/>
@@ -358,15 +372,21 @@ function MeetingAgendaPreview ({ className }) {
                                         </AgendaTM>
                                     </AgendaItemTitle>
                                     <AgendaContent className="agenda-content">
-                                        
-                                        
-                                        <SimpleMDE
-                                            id={ `details_${ agenda.id }` }
-                                            value={ agenda.details }
-                                            onChange={ (e) => updateMeetingAgenda(e, agenda.id) }
-                                            options={{ autosave: false, autofocus: true, spellChecker: false, status: false,
-                                                toolbar: [ 'bold', 'quote', 'table', '|', 'preview' ]
-                                        }} />
+                                        { tab === 'write' &&
+                                            <SimpleMDE
+                                                id={ `details_${ agenda.id }` }
+                                                value={ agenda.details }
+                                                onChange={ (e) => updateMeetingAgenda(e, agenda.id) }
+                                                options={{ autosave: false, autofocus: true, spellChecker: false, status: false,
+                                                    toolbar: [ 'bold', 'quote', 'table' ]
+                                            }} />
+                                        }
+                                        { tab === 'preview' &&
+                                            <ReactMarkdown
+                                                source={ agenda.details }
+                                                escapeHtml={ false }
+                                            />
+                                        }
                                     </AgendaContent>
                                 </AgendaItem>
                             )}

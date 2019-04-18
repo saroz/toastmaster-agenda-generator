@@ -178,7 +178,7 @@ blockquote ~ table {
     }  
   }
   @media screen {
-    &:hover {
+    &.hover:hover {
       outline: #d3d3d3 dashed 1px;
       overflow: visible;
       box-shadow: #fafafa 0 1rem 2rem;
@@ -360,9 +360,17 @@ blockquote ~ table {
     width: 20rem;
     background-color: rgba(0, 123, 255, 1 );
     img {
-      top: 1.5rem;
       width: 2.8rem;
     }  
+  }
+  &-warning {
+    img {
+      margin-top: -0.4rem;
+    }
+    span {
+      min-width: 6rem;
+    }
+    background-color: #ad125b;
   }
   &:hover {
     background-color: #000;
@@ -391,6 +399,9 @@ blockquote ~ table {
   &:focus {
     outline: 2px solid transparent;
     background-color: #eeeeee;
+  }
+  &:disabled {
+    background: none;
   }
 }
 textarea.form-item {

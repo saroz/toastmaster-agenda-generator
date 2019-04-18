@@ -36,19 +36,21 @@ export const AgendaTM = styled.span`
         text-align: right;
     }
 `;
+
 export const AgendaContent = styled.div`
     margin-left: 6rem;
     margin-top: 0.6rem;
     * {
         font-size: 1.4rem;
     }
+    @media screen {
+        margin-left: 6.6rem;
+    }
 `;
-
 
 export const SaveDataWrap = styled.div`
     position: relative;
 `;
-
 
 export const AgendaLivePreview = styled.section`
     background: #fff;
