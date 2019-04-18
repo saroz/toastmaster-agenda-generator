@@ -39,7 +39,6 @@ export const AgendaTM = styled.span`
 
 export const AgendaContent = styled.div`
     margin-left: 6rem;
-    margin-top: 0.6rem;
     * {
         font-size: 1.4rem;
     }

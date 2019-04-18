@@ -170,6 +170,9 @@ function MeetingAgendaPreview ({ className }) {
         setTab('write')
         disableInputs(document.querySelectorAll('.form-item'), false);
     };
+    const getInstance = instance => {
+        instance.togglePreview();
+    };
 
     const printMyAgenda = () => {
         checkPreview();
@@ -283,16 +286,21 @@ function MeetingAgendaPreview ({ className }) {
                                     value={meetingBasic.sergeant}
                                     placeholder="Club Sergeant at Arms" />
                                 </dd>
-                                <dt>Past President</dt>
-                                <dd>
-                                    <Field
-                                    type="text"
-                                    autoComplete="off"
-                                    name="pastPresident"
-                                    onChange={updateMeetingBasicInfo}
-                                    value={meetingBasic.pastpresident}
-                                    placeholder="Past President" />
-                                </dd>
+                                {
+                                    meetingBasic.pastpresident && 
+                                    <>
+                                        <dt>Past President</dt>
+                                        <dd>
+                                            <Field
+                                            type="text"
+                                            autoComplete="off"
+                                            name="pastPresident"
+                                            onChange={updateMeetingBasicInfo}
+                                            value={meetingBasic.pastpresident}
+                                            placeholder="Past President" />
+                                        </dd>
+                                    </>
+                                }
                             </dl>
                             <p className="lead d-block">
                                 <Textarea
@@ -374,11 +382,12 @@ function MeetingAgendaPreview ({ className }) {
                                     <AgendaContent className="agenda-content">
                                         { tab === 'write' &&
                                             <SimpleMDE
+                                                getMdeInstance= { getInstance }
                                                 id={ `details_${ agenda.id }` }
-                                                value={ agenda.details }
+                                                value={ agenda.details || `Please write details`}
                                                 onChange={ (e) => updateMeetingAgenda(e, agenda.id) }
                                                 options={{ autosave: false, autofocus: true, spellChecker: false, status: false,
-                                                    toolbar: [ 'bold', 'quote', 'table' ]
+                                                    toolbar: [ 'bold', 'quote', 'table', '|', 'preview' ]
                                             }} />
                                         }
                                         { tab === 'preview' &&

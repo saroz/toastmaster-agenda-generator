@@ -94,12 +94,6 @@ table {
     text-align: right;
   }
 }
-blockquote ~ table {
-  th, td {
-    border-color: transparent !important;
-    padding: 0
-  }
-}
 .fa-spinner {
   margin-left: .625rem;
 }
@@ -132,7 +126,6 @@ blockquote ~ table {
 
 .agenda {
   margin-bottom: 0;
-  padding: 2rem;
   position: relative;
   outline: transparent dashed 1px;
   transition: all .3s;
@@ -178,14 +171,17 @@ blockquote ~ table {
     }  
   }
   @media screen {
-    &.hover:hover {
-      outline: #d3d3d3 dashed 1px;
-      overflow: visible;
-      box-shadow: #fafafa 0 1rem 2rem;
-      z-index: 11;
-      .agenda-actionButtons {
-        opacity: 1;
-        top: -1.5rem;
+    &.hover{
+      padding: 2rem;
+      &:hover {
+        outline: #d3d3d3 dashed 1px;
+        overflow: visible;
+        box-shadow: #fafafa 0 1rem 2rem;
+        z-index: 11;
+        .agenda-actionButtons {
+          opacity: 1;
+          top: -1.5rem;
+        }
       }
     }
   }
@@ -254,6 +250,7 @@ blockquote ~ table {
   border: none;
   box-shadow: inset #eee 0 0 0 1px;
   border-radius: 0 0 0.2rem 0.2rem;
+
   &-wrap {
     padding: 0;
   }
@@ -275,7 +272,10 @@ blockquote ~ table {
 }
 .editor-preview-active {
   background-color: #fff;
-  padding: 0;
+  padding: 1rem 0 0 0;
+  table {
+    width: calc(100% - 1px);
+  }
 }
 
 .mark-down {
@@ -402,6 +402,20 @@ blockquote ~ table {
   }
   &:disabled {
     background: none;
+    &:not([name="startAt"]) {
+      &::-webkit-input-placeholder {
+        color: transparent;
+      }
+      &:-moz-placeholder {
+          color: transparent;
+      }
+      &::-moz-placeholder {
+          color: transparent;
+      }
+      &:-ms-input-placeholder {
+          color: transparent;
+      }    
+    }
   }
 }
 textarea.form-item {
@@ -413,6 +427,30 @@ textarea.form-item {
   }
   &.large {
     min-height: 20rem;
+  }
+}
+blockquote {
+  margin: .125rem 0;
+  border: 1px solid #000;
+  padding: .875rem;
+  margin-bottom: .625rem;
+  line-height: 1.8;
+  p {
+      display: flex;
+      flex-direction: row;
+      span {
+          white-space: nowrap;
+          padding-right: 0.5rem;
+      }
+  }
+
+}
+.no-border {
+  table {
+    th, td {
+      border-color: transparent !important;
+      padding: 0
+    }
   }
 }
 
@@ -512,5 +550,17 @@ textarea.form-item {
     }
     .editor-toolbar {
       display: none;
+    }
+    ::-webkit-input-placeholder {
+      color: transparent;
+    }
+    :-moz-placeholder {
+        color: transparent;
+    }
+    ::-moz-placeholder {
+        color: transparent;
+    }
+    :-ms-input-placeholder {
+        color: transparent;
     }
   }
