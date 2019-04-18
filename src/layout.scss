@@ -176,7 +176,7 @@ table {
       &:hover {
         outline: #d3d3d3 dashed 1px;
         overflow: visible;
-        box-shadow: #fafafa 0 1rem 2rem;
+        box-shadow: #f0f0f0 0 0.5rem 4rem;
         z-index: 11;
         .agenda-actionButtons {
           opacity: 1;
@@ -272,10 +272,17 @@ table {
 }
 .editor-preview-active {
   background-color: #fff;
-  padding: 1rem 0 0 0;
-  table {
-    width: calc(100% - 1px);
+  padding: 0;
+  margin-top: -1px;
+  position: static;
+}
+.disabled-for-preview {
+  & + .CodeMirror {
+    .CodeMirror-scroll {
+      display: none;
+    }
   }
+
 }
 
 .mark-down {

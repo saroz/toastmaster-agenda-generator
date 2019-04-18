@@ -151,7 +151,7 @@ export const Ballots = styled.div`;
 
 export const ClubName = styled.div`
     text-align: center;
-    margin: 1.5rem 0 1rem;
+    margin: 2rem 0 0.5rem;
     line-height: 1.2;
     small {
         font-size: 1.5rem;
@@ -177,6 +177,7 @@ export const ClubTitle = styled.h2`
     margin: 0;
     position: relative;
     display: inline-block;
+    line-height: 1.2;
     span {
         opacity: 0;
         display: block;
@@ -187,6 +188,7 @@ export const ClubTitle = styled.h2`
     }
     input {
         position: absolute;
+        line-height: 1;
         z-index: 9;
         top: 0;
         width: 100%;
@@ -198,6 +200,7 @@ export const ClubTitle = styled.h2`
 `;
 export const ClubNumber = styled.p`
     position: relative;
+    line-height: 1.2;
     span {
         opacity: 0;
         display: block;
@@ -210,6 +213,7 @@ export const ClubNumber = styled.p`
     color: #003F62;
     input {
         z-index: 9;
+        line-height: 1;
         position: absolute;
         top: 0;
         width: 100%;
@@ -220,12 +224,14 @@ export const ClubNumber = styled.p`
 `;
 
 export const ClubMeetingDate = styled.time`
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     display: block;
+    line-height: 1.4;
     input {
+        line-height: 1.4;
         margin: 0 auto;
         text-align: center;
-        max-width: 20rem;
+        max-width: 30rem;
     }
 `;
 
@@ -233,10 +239,12 @@ export const ClubMeetingTheme = styled.p`
     font-size: 1.5rem;
     display: block;
     color: #003F62;
+    line-height: 1.2;
     input {
         margin: 0 auto;
         text-align: center;
-        max-width: 50rem;
+        max-width: 60rem;
+        line-height: 1.2;
         &::placeholder {
             color: #003F62;
         }

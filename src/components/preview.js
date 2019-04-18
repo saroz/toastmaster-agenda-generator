@@ -288,7 +288,7 @@ function MeetingAgendaPreview ({ className }) {
                                 </dd>
                                 {
                                     meetingBasic.pastpresident && 
-                                    <>
+                                    <React.Fragment>
                                         <dt>Past President</dt>
                                         <dd>
                                             <Field
@@ -299,7 +299,7 @@ function MeetingAgendaPreview ({ className }) {
                                             value={meetingBasic.pastpresident}
                                             placeholder="Past President" />
                                         </dd>
-                                    </>
+                                    </React.Fragment>
                                 }
                             </dl>
                             <p className="lead d-block">
