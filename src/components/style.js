@@ -151,7 +151,7 @@ export const Ballots = styled.div`;
 
 export const ClubName = styled.div`
     text-align: center;
-    margin: 2rem 0 0.5rem;
+    margin: 3rem 0 1rem;
     line-height: 1.2;
     small {
         font-size: 1.5rem;
@@ -226,9 +226,7 @@ export const ClubNumber = styled.p`
 export const ClubMeetingDate = styled.time`
     font-size: 1.2rem;
     display: block;
-    line-height: 1.4;
     input {
-        line-height: 1.4;
         margin: 0 auto;
         text-align: center;
         max-width: 30rem;
@@ -239,12 +237,12 @@ export const ClubMeetingTheme = styled.p`
     font-size: 1.5rem;
     display: block;
     color: #003F62;
-    line-height: 1.2;
+    line-height: 1.4;
     input {
+        line-height: 1.4;
         margin: 0 auto;
         text-align: center;
         max-width: 60rem;
-        line-height: 1.2;
         &::placeholder {
             color: #003F62;
         }
