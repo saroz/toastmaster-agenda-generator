@@ -29,8 +29,6 @@ import {
     AgendaTM,
     AgendaContent,
     LoaderIndicator,
-    AgendaDesc,
-    Blockquote,
 } from './style';
 
 import logo from '../toastmasters-logo.png';
@@ -161,7 +159,7 @@ function MeetingAgendaPreview ({ className }) {
       };
       const printMyAgenda = () => {
         window.print();
-      }    
+      }
 
     return (
         <Main>
@@ -199,7 +197,7 @@ function MeetingAgendaPreview ({ className }) {
                                     name="president"
                                     onChange={updateMeetingBasicInfo}
                                     value={meetingBasic.president}
-                                    placeholder="Club President Name"/>
+                                    placeholder="Club President"/>
                                 </dd>
 
                                 <dt>VP Education</dt>
@@ -210,7 +208,7 @@ function MeetingAgendaPreview ({ className }) {
                                     name="vPEducation"
                                     onChange={updateMeetingBasicInfo}
                                     value={meetingBasic.vPEducation}
-                                    placeholder="Club VP Education Name" />
+                                    placeholder="Club VP Education" />
                                 </dd>
                                 <dt>VP Membership</dt>
                                 <dd>
@@ -220,7 +218,7 @@ function MeetingAgendaPreview ({ className }) {
                                     name="vPMembership"
                                     onChange={updateMeetingBasicInfo}
                                     value={meetingBasic.vPMembership}
-                                    placeholder="Club VP Membership Name" />
+                                    placeholder="Club VP Membership" />
                                 </dd>
                                 
                                 <dt>VP Public Relations</dt>
@@ -231,7 +229,7 @@ function MeetingAgendaPreview ({ className }) {
                                     name="vPRelation"
                                     onChange={updateMeetingBasicInfo}
                                     value={meetingBasic.vPRelation}
-                                    placeholder="Club VP Public Relations Name" />
+                                    placeholder="Club VP Public Relations" />
                                 </dd>
 
                                 <dt>Secretary</dt>
@@ -242,7 +240,7 @@ function MeetingAgendaPreview ({ className }) {
                                     name="secretary"
                                     onChange={updateMeetingBasicInfo}
                                     value={meetingBasic.secretary}
-                                    placeholder="Club Secretary Name" />
+                                    placeholder="Club Secretary" />
                                 </dd>
 
                                 <dt>Treasurer</dt>
@@ -253,7 +251,7 @@ function MeetingAgendaPreview ({ className }) {
                                     name="treasurer"
                                     onChange={updateMeetingBasicInfo}
                                     value={meetingBasic.treasurer}
-                                    placeholder="Club Treasurer Name" />
+                                    placeholder="Club Treasurer" />
                                 </dd>
 
                                 <dt>Sergeant at Arms</dt>
@@ -264,7 +262,7 @@ function MeetingAgendaPreview ({ className }) {
                                     name="sergeant"
                                     onChange={updateMeetingBasicInfo}
                                     value={meetingBasic.sergeant}
-                                    placeholder="Club Sergeant at Arms Name" />
+                                    placeholder="Club Sergeant at Arms" />
                                 </dd>
                                 <dt>Past President</dt>
                                 <dd>
@@ -274,7 +272,7 @@ function MeetingAgendaPreview ({ className }) {
                                     name="pastPresident"
                                     onChange={updateMeetingBasicInfo}
                                     value={meetingBasic.pastpresident}
-                                    placeholder="Past President Name" />
+                                    placeholder="Past President" />
                                 </dd>
                             </dl>
                             <p className="lead d-block">
@@ -360,64 +358,15 @@ function MeetingAgendaPreview ({ className }) {
                                         </AgendaTM>
                                     </AgendaItemTitle>
                                     <AgendaContent className="agenda-content">
-                                        <DFlex>
-                                            <AgendaDesc>
-                                                <Field type="text" name="details_desc" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Chair’s welcome" value={agenda.details} />
-                                            </AgendaDesc>
-                                            <AgendaTM className="agenda-TM">
-                                                <Field type="text" name="details_toastmaster]" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Toastmaster name" value={agenda.details} />
-                                            </AgendaTM>
-                                        </DFlex>
-                                        <AgendaDesc className="full">
-                                            <Textarea
-                                                className="small"
-                                                name="details_short"
-                                                value={agenda.details}
-                                                onChange={(e) => updateMeetingAgenda(e, agenda.id)}
-                                                placeholder="Short description"/>
-                                        </AgendaDesc>
-                                        <table>
-                                            <thead>
-                                                <tr>
-                                                    <td>
-                                                        <Field type="text" name="details_th_1" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Speaker" value={agenda.details} />
-                                                    </td>
-                                                    <td>
-                                                        <Field type="text" name="details_th_2" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="{Title}" value={agenda.details} />
-                                                    </td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>
-                                                        <Field type="text" name="details_td_1" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Speaker name" value={agenda.details} />
-                                                    </td>
-                                                    <td>
-                                                        <Field type="text" name="details_td_2" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="{Value}" value={agenda.details} />
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <Blockquote>
-                                            <AgendaDesc className="full">
-                                                <span>Word of the Day: </span><Field type="text" name="details_wod" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Ebullient (adj)" value={agenda.details} />
-                                            </AgendaDesc>
-                                            <AgendaDesc className="full">
-                                                <span>Meaning: </span><Field type="text" name="details_meaning" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="having or showing liveliness and enthusiasm " value={agenda.details} />
-                                                </AgendaDesc>
-                                            <AgendaDesc className="full">
-                                                <span>Usages: </span><Field type="text" name="details_usages" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="She sounded ebullient and happy." value={agenda.details} />
-                                            </AgendaDesc>
-                                        </Blockquote>
                                         
-                                        {/* <SimpleMDE
-                                            getMdeInstance= { getInstance }
+                                        
+                                        <SimpleMDE
                                             id={ `details_${ agenda.id }` }
                                             value={ agenda.details }
                                             onChange={ (e) => updateMeetingAgenda(e, agenda.id) }
                                             options={{ autosave: false, autofocus: true, spellChecker: false, status: false,
                                                 toolbar: [ 'bold', 'quote', 'table', '|', 'preview' ]
-                                            }} /> */}
+                                        }} />
                                     </AgendaContent>
                                 </AgendaItem>
                             )}
