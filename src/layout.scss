@@ -179,6 +179,11 @@ table {
     }  
   }
   @media screen {
+    &.no-hover {
+      .editor-toolbar {
+        display: none;
+      }
+    }
     &.hover{
       padding: 2rem;
       &:hover {
@@ -461,9 +466,10 @@ blockquote {
 }
 .no-border {
   table {
+    border: none;
     th, td {
       border-color: transparent !important;
-      padding: 0
+      padding: 0;
     }
   }
 }

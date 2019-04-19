@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import ReactDOMServer from "react-dom/server";
 import PropTypes from 'prop-types';
 import localforage from 'localforage';
 
@@ -95,6 +96,14 @@ function MeetingAgendaPreview ({ className }) {
         setmeetingBasic({ ...meetingBasic, [name] : value });
     }
 
+    const noBorder = (element) => {
+        // const checkarr = ['master', 'speakers', 'evaluations'];
+        const newarr = element.value.toLowerCase().split(' ');
+        if(newarr.indexOf('master') === -1 && newarr.indexOf('speakers') === -1 && newarr.indexOf('evaluations') === -1) {
+            console.log('match');
+            element.parentNode.parentNode.nextSibling.classList.add('no-border');
+        }
+    }
     // Update MeetingAgenda data on Change
     const updateMeetingAgenda = (e, id) => {
         let newMeetingAgenda = [];
@@ -106,6 +115,7 @@ function MeetingAgendaPreview ({ className }) {
         } else {
             newMeetingAgenda = meetingAgenda.map(agenda => {
             if (parseInt(agenda.id, 10) !== id) return agenda;
+            noBorder(e.target);
             return { ...agenda, [ e.target.name ]: e.target.value };
           });
         }
@@ -152,6 +162,11 @@ function MeetingAgendaPreview ({ className }) {
         localforage.getItem('agenda', function(err, value) {
           if (value !== null ) setMeetingAgenda(value)
         });
+        setTimeout(() => {
+            document.querySelectorAll('h4 input').forEach(element => {
+                noBorder(element);
+            })
+        }, 1500);
         return;
     }, []);  
 
@@ -178,7 +193,7 @@ function MeetingAgendaPreview ({ className }) {
         checkPreview();
         window.print();
     }
-
+    
     return (
         <Main>
             <SaveDataWrap id="a-buttons" className="buttons">
@@ -356,7 +371,7 @@ function MeetingAgendaPreview ({ className }) {
                         </ClubName>
                         <div className="agendas-wrap">
                             { meetingAgenda.map(agenda => 
-                                <AgendaItem className={`agenda ${tab === 'write' ? 'hover' : ''}`} key={ agenda.id }>
+                                <AgendaItem className={`agenda ${tab === 'write' ? 'hover' : 'no-hover'}`} key={ agenda.id }>
                                     <AgendaActionButtons>
                                         { meetingAgenda.length > 1 && (
                                                 <span data-title="Remove" onClick={ (e) => removeAgenda(e, agenda.id) } className="action action-remove">
@@ -380,22 +395,22 @@ function MeetingAgendaPreview ({ className }) {
                                         </AgendaTM>
                                     </AgendaItemTitle>
                                     <AgendaContent className="agenda-content">
-                                        { tab === 'write' &&
-                                            <SimpleMDE
-                                                getMdeInstance= { getInstance }
-                                                id={ `details_${ agenda.id }` }
-                                                value={ agenda.details || `Please write details`}
-                                                onChange={ (e) => updateMeetingAgenda(e, agenda.id) }
-                                                options={{ autosave: false, autofocus: true, spellChecker: false, status: false,
-                                                    toolbar: [ 'bold', 'quote', 'table', '|', 'preview' ]
-                                            }} />
-                                        }
-                                        { tab === 'preview' &&
-                                            <ReactMarkdown
-                                                source={ agenda.details }
-                                                escapeHtml={ false }
-                                            />
-                                        }
+                                        <SimpleMDE
+                                            getMdeInstance= { getInstance }
+                                            id={ `details_${ agenda.id }` }
+                                            value={ agenda.details || `Please write details`}
+                                            onChange={ (e) => updateMeetingAgenda(e, agenda.id) }
+                                            options={{ autosave: false, autofocus: true, spellChecker: false, status: false,
+                                                toolbar: [ 'bold', 'quote', 'table', '|', 'preview' ],
+                                                previewRender(content) {
+                                                    return ReactDOMServer.renderToString(
+                                                        <ReactMarkdown
+                                                        source={content}
+                                                        escapeHtml={ false }
+                                                        />
+                                                    );
+                                                }
+                                        }} />
                                     </AgendaContent>
                                 </AgendaItem>
                             )}
