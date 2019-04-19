@@ -250,8 +250,8 @@ export const ClubMeetingTheme = styled.p`
 `;
 export const LoaderIndicator = styled.i`
     position: absolute;
-    left: 110%;
-    top: 0;
+    left: 102%;
+    top: 2rem;
     color: #007bff;
     font-size: 2rem !important;
 `;
@@ -278,4 +278,17 @@ export const Blockquote = styled.blockquote`
         }
     }
 `;
-
+export const Help = styled.div`
+    position: fixed;
+    right: 4rem;
+    top: 4rem;
+    a {
+        text-align: center;
+        font-weight: bold;
+        border: 1px solid;
+        padding: 0.5rem 0.8rem;
+        background-color: #fff;
+        border-radius: 0.2rem;
+        text-decoration: none;
+    }
+`;

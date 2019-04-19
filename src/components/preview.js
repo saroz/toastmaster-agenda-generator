@@ -30,6 +30,7 @@ import {
     AgendaTM,
     AgendaContent,
     LoaderIndicator,
+    Help,
 } from './style';
 
 import logo from '../toastmasters-logo.png';
@@ -100,7 +101,6 @@ function MeetingAgendaPreview ({ className }) {
         // const checkarr = ['master', 'speakers', 'evaluations'];
         const newarr = element.value.toLowerCase().split(' ');
         if(newarr.indexOf('master') === -1 && newarr.indexOf('speakers') === -1 && newarr.indexOf('evaluations') === -1) {
-            console.log('match');
             element.parentNode.parentNode.nextSibling.classList.add('no-border');
         }
     }
@@ -187,6 +187,12 @@ function MeetingAgendaPreview ({ className }) {
     };
     const getInstance = instance => {
         instance.togglePreview();
+        setTimeout(() => {
+            document.querySelectorAll('h4 input').forEach(element => {
+                noBorder(element);
+            })
+        }, 500);
+
     };
 
     const printMyAgenda = () => {
@@ -196,6 +202,9 @@ function MeetingAgendaPreview ({ className }) {
     
     return (
         <Main>
+            <Help>
+                <a target="blank" rel="noopener" href="https://youtu.be/OGynTOXjE78">Need Help ?</a>
+            </Help>
             <SaveDataWrap id="a-buttons" className="buttons">
                 <Button className="bg-primary btn-print" onClick={printMyAgenda}>
                     <img src={print} alt="Print" />
@@ -204,12 +213,12 @@ function MeetingAgendaPreview ({ className }) {
                 <Button className="btn-save" onClick={saveData} type="button">
                     <img src={save} alt="Save" />
                     <span>Save Agenda</span>
-                    {loading && <LoaderIndicator className="fa fa-spinner fa-spin" />}
                 </Button>
                 <Button className="btn-warning" type="button" onClick={tab === 'preview' ? checkWrite : checkPreview}>
                     <img src={viewpreview} alt="View Preview" />
                     <span>{tab === 'preview' ? 'Write' : 'Preview'}</span>
                 </Button>
+                {loading && <LoaderIndicator className="fa fa-spinner fa-spin" />}
             </SaveDataWrap>
             <AgendaLivePreview className={ `${ className } print-preview` }>
                 <PreviewIn>
@@ -398,7 +407,8 @@ function MeetingAgendaPreview ({ className }) {
                                         <SimpleMDE
                                             getMdeInstance= { getInstance }
                                             id={ `details_${ agenda.id }` }
-                                            value={ agenda.details || `Please write details`}
+                                            value={ agenda.details}
+                                            autofocus={true}
                                             onChange={ (e) => updateMeetingAgenda(e, agenda.id) }
                                             options={{ autosave: false, autofocus: true, spellChecker: false, status: false,
                                                 toolbar: [ 'bold', 'quote', 'table', '|', 'preview' ],
