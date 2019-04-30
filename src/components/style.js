@@ -291,4 +291,7 @@ export const Help = styled.div`
         border-radius: 0.2rem;
         text-decoration: none;
     }
+    @media print {
+        display: none;
+    }
 `;

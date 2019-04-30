@@ -216,7 +216,7 @@ function MeetingAgendaPreview ({ className }) {
                 </Button>
                 <Button className="btn-warning" type="button" onClick={tab === 'preview' ? checkWrite : checkPreview}>
                     <img src={viewpreview} alt="View Preview" />
-                    <span>{tab === 'preview' ? 'Write' : 'Preview'}</span>
+                    <span>{tab === 'preview' ? 'edit' : 'Preview'}</span>
                 </Button>
                 {loading && <LoaderIndicator className="fa fa-spinner fa-spin" />}
             </SaveDataWrap>
@@ -408,9 +408,8 @@ function MeetingAgendaPreview ({ className }) {
                                             getMdeInstance= { getInstance }
                                             id={ `details_${ agenda.id }` }
                                             value={ agenda.details}
-                                            autofocus={true}
                                             onChange={ (e) => updateMeetingAgenda(e, agenda.id) }
-                                            options={{ autosave: false, autofocus: true, spellChecker: false, status: false,
+                                            options={{ autoSave: false, autoFocus: true, spellChecker: false, status: false,
                                                 toolbar: [ 'bold', 'quote', 'table', '|', 'preview' ],
                                                 previewRender(content) {
                                                     return ReactDOMServer.renderToString(
