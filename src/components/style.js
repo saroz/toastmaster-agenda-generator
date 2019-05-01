@@ -48,7 +48,19 @@ export const AgendaContent = styled.div`
 `;
 
 export const SaveDataWrap = styled.div`
-    position: relative;
+    z-index: 1090;
+    display: inline-flex;
+    justify-content: center;
+    transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    position: sticky;
+    top: 0;
+    left: 50%;
+    margin: 2rem auto;
+    box-shadow: rgba(0 ,0, 0, 0.3) 0 0.5rem 2.5rem;
+    transform: translateX(-50%);
+    @media print {
+        display: none;
+    }
 `;
 
 export const AgendaLivePreview = styled.section`
@@ -282,6 +294,7 @@ export const Help = styled.div`
     position: fixed;
     right: 4rem;
     top: 4rem;
+    z-index: 1092;
     a {
         text-align: center;
         font-weight: bold;

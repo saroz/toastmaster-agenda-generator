@@ -38,6 +38,7 @@ import remove from '../icons/remove.svg';
 import add from '../icons/add.svg';
 import print from '../icons/print.svg';
 import save from '../icons/save.svg';
+import edit from '../icons/edit.svg';
 import viewpreview from '../icons/preview.svg';
 import SimpleMDE from 'react-simplemde-editor';
 import ReactMarkdown from 'react-markdown';
@@ -215,8 +216,8 @@ function MeetingAgendaPreview ({ className }) {
                     <span>Save Agenda</span>
                 </Button>
                 <Button className="btn-warning" type="button" onClick={tab === 'preview' ? checkWrite : checkPreview}>
-                    <img src={viewpreview} alt="View Preview" />
-                    <span>{tab === 'preview' ? 'edit' : 'Preview'}</span>
+                    <img src={tab === 'preview' ? viewpreview : edit} alt="View Preview" />
+                    <span>{tab === 'preview' ? 'Preview' : 'edit'}</span>
                 </Button>
                 {loading && <LoaderIndicator className="fa fa-spinner fa-spin" />}
             </SaveDataWrap>
