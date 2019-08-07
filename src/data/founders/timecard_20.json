@@ -8,8 +8,8 @@
     },
     {
         "id": "2",
-        "name": "TM Punit Jajodia",
-        "role": "Presiding Officer",
+        "name": "TM Saroj Poddar",
+        "role": "Presiding Officer, Club Secretary",
         "sep": false,
         "time": 0
     },
@@ -30,7 +30,7 @@
     {
         "id": "5",
         "name": "TM Sirapa Manandhar",
-        "role": "Ah Counter",
+        "role": "Ah Counter, Club SAA",
         "sep": false,
         "time": 0
     },
@@ -93,7 +93,7 @@
     {
         "id": "14",
         "name": "TM Amit Bajracharya",
-        "role": "Feautured Speaker",
+        "role": "Feautured Speaker, Club VP of PR",
         "sep": true,
         "time": 0
     },
@@ -107,7 +107,7 @@
     {
         "id": "16",
         "name": "TM Diwan Adhikari",
-        "role": "Feautured Speaker",
+        "role": "Feautured Speaker, Club Treasurer",
         "sep": false,
         "time": 0
     },
@@ -121,7 +121,7 @@
     {
         "id": "18",
         "name": "TM Raushan Jaiswal (CC)",
-        "role": "Evaluator for Brijen",
+        "role": "Evaluator for Brijen, Club President",
         "sep": false,
         "time": 0
     },
