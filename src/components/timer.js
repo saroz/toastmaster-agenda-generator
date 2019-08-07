@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Timer from 'react-compound-timer';
 
 import { Main } from './style';
 
@@ -33,6 +34,16 @@ const Table = styled.table`
     th,
     td {
         padding: 0.8rem 1rem !important;
+
+        &:first-of-type {
+            text-align: center;
+        }
+    }
+
+    tr.separator {
+        > td {
+            border-top: 3px solid #003F62 !important;
+        }
     }
 
 `;
@@ -56,60 +67,133 @@ function TimerCard ({ className }) {
             id: 1,
             name: 'TM Binayak Dahal',
             role: 'SAA',
+            sep: false,
             time: 0
         },
         {
             id: 2,
             name: 'TM Punit Jajodia',
             role: 'Presiding Officer',
+            sep: false,
             time: 0
         },
         {
             id: 3,
             name: 'TM Alex Wrigley',
             role: 'TMoE',
+            sep: false,
             time: 0
         },
         {
             id: 4,
             name: 'TM Manesh Timsina',
             role: 'Grammarian',
+            sep: false,
             time: 0
         },
         {
             id: 5,
             name: 'TM Sirapa Manandhar',
             role: 'Ah Counter',
+            sep: false,
             time: 0
         },
         {
             id: 6,
             name: 'TM Shekhar Sharma',
             role: 'Timer',
+            sep: false,
             time: 0
         },
         {
             id: 7,
             name: 'TM Sanchita Tiwari',
             role: 'Ballot Counter',
+            sep: false,
             time: 0
         },
         {
             id: 8,
             name: 'TM Nabin Jaiswa',
             role: 'Listener',
+            sep: false,
             time: 0
         },
         {
             id: 9,
             name: 'TM Chandrayan Shrestha (SR3)',
             role: 'General Evaluator',
+            sep: false,
             time: 0
         },
         {
             id: 10,
             name: 'TM Dipesh Khanal',
             role: 'TTM',
+            sep: false,
+            time: 0
+        },
+        {
+            id: 11,
+            name: 'TM Table Topic Speaker 1',
+            role: 'Table Topic Speaker',
+            sep: true,
+            time: 0
+        },
+        {
+            id: 12,
+            name: 'TM Table Topic Speaker 2',
+            role: 'Table Topic Speaker',
+            sep: false,
+            time: 0
+        },
+        {
+            id: 13,
+            name: 'TM Table Topic Speaker 3',
+            role: 'Table Topic Speaker',
+            sep: false,
+            time: 0
+        },
+        {
+            id: 14,
+            name: 'TM Amit Bajracharya',
+            role: 'Feautured Speaker',
+            sep: true,
+            time: 0
+        },
+        {
+            id: 15,
+            name: 'TM Brijen Joshi (CC, CL)',
+            role: 'Feautured Speaker',
+            sep: false,
+            time: 0
+        },
+        {
+            id: 16,
+            name: 'TM Diwan Adhikari',
+            role: 'Feautured Speaker',
+            sep: false,
+            time: 0
+        },
+        {
+            id: 17,
+            name: 'TM Samjahana Rai (IP2,CC,CL)',
+            role: 'Evaluator for Amit',
+            sep: true,
+            time: 0
+        },
+        {
+            id: 18,
+            name: 'TM Raushan Jaiswal (CC)',
+            role: 'Evaluator for Brijen',
+            sep: false,
+            time: 0
+        },
+        {
+            id: 19,
+            name: 'TM Shaurab Lohanil (ACB, ALB)',
+            role: 'Evaluator for Diwan',
+            sep: false,
             time: 0
         }
     ])
@@ -128,14 +212,24 @@ function TimerCard ({ className }) {
                     </thead>
                     <tbody>
                     {
-                        speakers && speakers.map(speaker => <tr key={speaker.id}>
-                            <td>{speaker.id}</td>
-                            <td>{speaker.name} <br /><small>({speaker.role})</small></td>
-                            <td>
-                                <span>{speaker.time}</span>
-                                <TimeButton type="button">Start</TimeButton>
-                            </td>
-                        </tr>)
+                        speakers && speakers.map(speaker => (<tr key={speaker.id} className={speaker.sep ? 'separator' : 'regular'}>
+                                <td>{speaker.id}.</td>
+                                <td>{speaker.name} <br /><small>({speaker.role})</small></td>
+                                <td>
+                                    <Timer initialTime={0} startImmediately={false}>
+                                        {({ start, resume, pause, stop, reset, getTimerState }) => {
+                                            const currentState = getTimerState();
+                                            return (
+                                            <React.Fragment>
+                                                <Timer.Minutes /> m : <Timer.Seconds /> s
+                                                {currentState === 'INITED' && <TimeButton type="button" onClick={start}>Start</TimeButton>}
+                                                {currentState === 'PAUSED' &&  <TimeButton type="button" onClick={resume}>Resume</TimeButton>}
+                                                {currentState === 'PLAYING' &&  <TimeButton type="button" onClick={pause}>Pause</TimeButton>}
+                                            </React.Fragment>
+                                        )}}
+                                    </Timer>
+                                </td>
+                            </tr>))
                     }
                     </tbody>
                 </Table>
