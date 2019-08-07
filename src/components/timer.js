@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import localforage from 'localforage';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 import { Main } from './style';
@@ -9,23 +8,17 @@ const TimerCardBox = styled.section`
     background: #fff;
     box-shadow: rgba(0,0,0,.1) 0.4rem 0.7rem 9.3rem 0.3rem;
     box-sizing: border-box;
+    max-width:90%;
+    margin: 2rem auto 0;
 
     @media screen and (min-width: 767px) {
         width: 119.0551181102rem;
-        margin: 5rem auto 0;
+        margin-top: 5rem;
         padding: 5rem;
     }
 `;
 
 const RightTh = styled.th`text-align: right`;
-
-const RightTd = styled.td`
-    text-align: right;
-
-    @media screen and (min-width: 768px) {
-        width: 12rem;
-    }
-`;
 
 const Table = styled.table`
     th {
@@ -84,54 +77,42 @@ function TimerCard ({ className }) {
             time: 0
         },
         {
-            id: 4,
+            id: 5,
             name: 'TM Sirapa Manandhar',
             role: 'Ah Counter',
             time: 0
         },
         {
-            id: 5,
+            id: 6,
             name: 'TM Shekhar Sharma',
             role: 'Timer',
             time: 0
         },
         {
-            id: 6,
+            id: 7,
             name: 'TM Sanchita Tiwari',
             role: 'Ballot Counter',
             time: 0
         },
         {
-            id: 7,
+            id: 8,
             name: 'TM Nabin Jaiswa',
             role: 'Listener',
             time: 0
         },
         {
-            id: 8,
+            id: 9,
             name: 'TM Chandrayan Shrestha (SR3)',
             role: 'General Evaluator',
             time: 0
         },
         {
-            id: 9,
+            id: 10,
             name: 'TM Dipesh Khanal',
             role: 'TTM',
             time: 0
         }
     ])
-    useEffect(() => {
-        localforage.config({
-            name: 'toastmaste_saroz-offline'
-        });
-
-        localforage.getItem('agenda', function(err, storedAgenda) {
-            if (storedAgenda === null ) return;
-            console.log(storedAgenda);
-            // const [speakers, addSpeakers] = useState(storedAgenda);
-        });
-
-      });
     return (
         <Main>
             <TimerCardBox>
@@ -147,7 +128,7 @@ function TimerCard ({ className }) {
                     </thead>
                     <tbody>
                     {
-                        speakers && speakers.map(speaker => <tr>
+                        speakers && speakers.map(speaker => <tr key={speaker.id}>
                             <td>{speaker.id}</td>
                             <td>{speaker.name} <br /><small>({speaker.role})</small></td>
                             <td>
