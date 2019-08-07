@@ -1,44 +1,86 @@
 [
     {
         "id": 1,
-        "details": "| Column 1 | Column 2 | Column 3 | \n| -------- | -------- | -------- | \n| Text     | Text     | Text     |",
+        "details": "|  |  |\n| -------- | -------- |\n| Presiding Officer's Welcome | TM John Doe |",
         "startAt": "6:00",
         "title": "SAA Calls Meeting to Order",
         "toastmaster": "TM John Doe"
     },
     {
         "id": 2,
-        "details": "\n|  |  |\n| -------- | -------- |\n| Toastmaster of the Evening | TM Raushan Jaiswal |\n",
-        "startAt": "6:00",
+        "details": "|  |  |\n| -------- | -------- |\n| Toastmaster of the Evening | TM John Doe |",
+        "startAt": "6:02",
         "title": "Presiding Officer Introduces the Toastmaster of the Evening (TMoE)",
         "toastmaster": "TM John Doe"
     },
     {
         "id": 3,
-        "details": "|  |  |\n| -------- | -------- | -------- |\n| Grammarian (Reviews the use of language and introduces WOD) | TM John Doe | \n > Word of the Day: **leadership** /ˈliːdəʃɪp/ \n > \n > Meaning: the action of leading a group of people or an organization. \n > \n > Usages: The party prospered under his leadership.\n \n|   |   |\n| -- | -- |\n|  Ah-Counter (Records interjections in the speeches)  |  TM John Doe |\n|  Timer (Records the time taken by the speeches)  |  TM John Doe |\n|  Ballot Counter (Collects ballot for better speakers)  |  TM John Doe |\n|  General Evaluator (Leads the evaluation session)  |  John Doe |",
-        "startAt": "6:00",
+        "details": "|  |  |\n| -------- | -------- | -------- |\n| Grammarian (Reviews the use of language and introduces WOD) | TM John Doe | \n > **Word of the Day: ** leadership /ˈliːdəʃɪp/ \n > \n > **Meaning:** the action of leading a group of people or an organization. \n > \n > **Usages:** The party prospered under his leadership.\n \n|   |   |\n| -- | -- |\n|  Ah-Counter (Records interjections in the speeches)  |  TM John Doe |\n|  Timer (Records the time taken by the speeches)  |  TM John Doe |\n|  Ballot Counter (Collects ballot for better speakers)  |  TM John Doe |\n|  General Evaluator (Leads the evaluation session)  |  John Doe |",
+        "startAt": "6:05",
         "title": "TMoE Calls on Meeting Roles",
         "toastmaster": "TM John Doe"
     },
     {
         "id": 4,
-        "details": "|  |  |\n| -------- | -------- | -------- |\n| Grammarian (Reviews the use of language and introduces WOD) | TM John Doe | \n > Word of the Day: **leadership** /ˈliːdəʃɪp/ \n > \n > Meaning: the action of leading a group of people or an organization. \n > \n > Usages: The party prospered under his leadership.\n \n|   |   |\n| -- | -- |\n|  Ah-Counter (Records interjections in the speeches)  |  TM John Doe |\n|  Timer (Records the time taken by the speeches)  |  TM John Doe |\n|  Ballot Counter (Collects ballot for better speakers)  |  TM John Doe |\n|  General Evaluator (Leads the evaluation session)  |  John Doe |",
+        "details": "(An impromptu speaking session where guests can participate too.\n \nTimer Flags: 1 min. - **Green**, 1:30 min. - **Yellow** and 2 min. - **Red**)\n \n| Speakers | Topics | Time |\n| -------- | -------- | -------- |\n| | | |\n| | | |\n| | | |",
         "startAt": "6:12",
         "title": "TMoE Introduces Table Topics Master",
         "toastmaster": "TM John Doe"
     },
     {
         "id": 5,
-        "details": "|  |  |\n| -------- | -------- | -------- |\n| Grammarian (Reviews the use of language and introduces WOD) | TM John Doe | \n > Word of the Day: **leadership** /ˈliːdəʃɪp/ \n > \n > Meaning: the action of leading a group of people or an organization. \n > \n > Usages: The party prospered under his leadership.\n \n|   |   |\n| -- | -- |\n|  Ah-Counter (Records interjections in the speeches)  |  TM John Doe |\n|  Timer (Records the time taken by the speeches)  |  TM John Doe |\n|  Ballot Counter (Collects ballot for better speakers)  |  TM John Doe |\n|  General Evaluator (Leads the evaluation session)  |  John Doe |",
-        "startAt": "6:00",
-        "title": "TMoE Calls on Meeting Roles",
+        "details": "(Speakers present speeches following the Toastmasters International Program/Pathways.)\n \n|Speakers|Project|Speech Title|Level|Time|\n|----- |------|----|----|----|\n| TM John Doe | Ice-Breaker | About Me | L1 | 4-6 min. |\n| TM John Doe | Ice-Breaker | About Me | L1 | 4-6 min. |\n| TM John Doe | Ice-Breaker | About Me | L1 | 4-6 min. |",
+        "startAt": "6:20",
+        "title": "TMoE Introduces Featured Speakers",
         "toastmaster": "TM John Doe"
     },
     {
         "id": 6,
-        "details": "|  |  |\n| -------- | -------- | -------- |\n| Grammarian (Reviews the use of language and introduces WOD) | TM John Doe | \n > Word of the Day: **leadership** /ˈliːdəʃɪp/ \n > \n > Meaning: the action of leading a group of people or an organization. \n > \n > Usages: The party prospered under his leadership.\n \n|   |   |\n| -- | -- |\n|  Ah-Counter (Records interjections in the speeches)  |  TM John Doe |\n|  Timer (Records the time taken by the speeches)  |  TM John Doe |\n|  Ballot Counter (Collects ballot for better speakers)  |  TM John Doe |\n|  General Evaluator (Leads the evaluation session)  |  John Doe |",
-        "startAt": "6:00",
-        "title": "TMoE Calls on Meeting Roles",
+        "details": "",
+        "startAt": "6:45",
+        "title": "Refreshment Break",
+        "toastmaster": "TM John Doe"
+    },
+    {
+        "id": 7,
+        "details": "",
+        "startAt": "7:00",
+        "title": "TMoE Introduces General Evaluator",
+        "toastmaster": "TM John Doe"
+    },
+    {
+        "id": 8,
+        "details": "(Brief comments and suggestions on the featured speeches)\n \nTimer Flags: 2min-**Green**, 2:30 min-**Yellow** and 3 min-**Red**\n \n |Evaluators|Speakers|\n|-|-|\n| TM John Doe| TM John Doe|\n| TM John Doe| TM John Doe|\n| TM John Doe| TM John Doe|\n \n Evaluations by the Grammarian, Ah-Counter and Timer (2 minutes each)\n \nGeneral Evaluator provides meeting & leader evaluations\n \nReturns control to the TMoE",
+        "startAt": "7:02",
+        "title": "General Evaluator Calls for Evaluations",
+        "toastmaster": "TM John Doe"
+    },
+    {
+        "id": 9,
+        "details": "",
+        "startAt": "7:17",
+        "title": "Listener Asks Questions",
+        "toastmaster": "TM John Doe"
+    },
+    {
+        "id": 10,
+        "details": "",
+        "startAt": "7:20",
+        "title": "Presentation of Awards By Ballot Counter",
+        "toastmaster": "TM John Doe"
+    },
+    {
+        "id": 11,
+        "details": "|||\n|-|-|\n|Presiding Officer| TM John Doe |",
+        "startAt": "7:25",
+        "title": "TMoE Returns Control Back To Presiding Officer",
+        "toastmaster": "TM John Doe"
+    },
+    {
+        "id": 12,
+        "details": "",
+        "startAt": "7:30",
+        "title": "Meeting Adjourned",
         "toastmaster": "TM John Doe"
     }
 ]

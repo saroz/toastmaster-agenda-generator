@@ -13,13 +13,13 @@ export const Textarea = styled.textarea.attrs({ className: 'form-item' })``;
 export const AgendaTitle = styled.h4`
     font-weight: bold;
     margin: 0;
-    font-size: 1.4rem;
-    max-width: calc(100% - 26rem);
-    flex: 0 0 calc(100% - 26rem);
+    font-size: 1.5rem;
+    max-width: calc(100% - 30rem);
+    flex: 0 0 calc(100% - 30rem);
 `;
 export const AgendaDesc = styled.p`
-    max-width: calc(100% - 26rem);
-    flex: 0 0 calc(100% - 26rem);
+    max-width: calc(100% - 30rem);
+    flex: 0 0 calc(100% - 30rem);
     &.full {
         max-width: 100%;
         flex: 0 0 100%;
@@ -28,9 +28,9 @@ export const AgendaDesc = styled.p`
 
 export const AgendaTM = styled.span`
     margin-left: auto;
-    font-size: 1.4rem;
-    max-width: 20rem;
-    flex: 0 0 20rem;
+    font-size: 1.5rem;
+    max-width: 24rem;
+    flex: 0 0 24rem;
 
     input {
         text-align: right;
@@ -40,7 +40,7 @@ export const AgendaTM = styled.span`
 export const AgendaContent = styled.div`
     margin-left: 6rem;
     * {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
     @media screen {
         margin-left: 6.6rem;
@@ -246,7 +246,7 @@ export const ClubMeetingDate = styled.time`
 `;
 
 export const ClubMeetingTheme = styled.p`
-    font-size: 1.5rem;
+    font-size: 1.6rem;
     display: block;
     color: #003F62;
     line-height: 1.4;

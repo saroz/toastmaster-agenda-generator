@@ -26,6 +26,7 @@ dt,
   color: #004165;
   font-weight: 700;
   line-height: 1.8;
+  font-size: 1.5rem;
   padding: 0.2rem 0.6rem;
 }
 dd {
@@ -75,12 +76,12 @@ dl, p, .lead {
 
 table {
   width: 100%;
-  border: 1px solid #444444;
+  border: 1px solid #000;
   margin: 0;
   td, th {
-    border: 1px solid #444444 !important;
+    border: 1px solid #000 !important;
     padding: 0.2rem 0.6rem !important;
-    color: #444444;
+    color: #000;
     text-align: left;
     height: 15px;
   }
@@ -133,7 +134,7 @@ table {
 }
 
 .agenda {
-  margin-bottom: 2px;
+  margin-bottom: 1px;
   position: relative;
   outline: transparent dashed 1px;
   transition: all .3s;
@@ -204,7 +205,7 @@ table {
     flex: 0 0 6rem;
     font-weight: 700;
     color: #003F62;
-    font-size: 1.4rem;
+    font-size: 1.5rem;
     input {
       width: 100%;
       color: #003F62;
@@ -382,11 +383,10 @@ table {
     outline: 0 solid transparent;
   }
 }
-
 .form-item {
   border: none;
   border-radius: 0.4rem;
-  font-size: inherit;
+  font-size: 1.5rem;
   color: inherit;
   line-height: 1.8;
   display: block;
@@ -396,6 +396,11 @@ table {
   box-sizing: border-box;
   font-weight: inherit;
   box-shadow: none;
+  &[name='clubName'],
+  &[name='clubNumber'],
+  &[name='meetingTheme'] {
+    font-size: inherit;
+  }
   &:hover {
     background-color: #fafafa;
   }
@@ -479,8 +484,21 @@ blockquote {
       //background: transparent !important;
       box-shadow: none !important;
     }
-    table, td, th, .ballots span, blockquote {
+    header {
+      filter: grayscale(100%);
+    }
+    table, td, th, .ballots span,
+    blockquote, dt, dd, time,
+    .title-bold, .agenda-time input,
+    a:link, a:visited,
+    &[name='clubName'],
+    &[name='clubNumber'],
+    &[name='meetingTheme'] {
       border-color: #000;
+      color: #000;
+    }
+    .inWrap {
+      border-right-color: #000 !important;
     }
 
     a {

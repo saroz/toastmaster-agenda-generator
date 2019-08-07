@@ -16,7 +16,7 @@ const SiteHeader = styled.header`
 `;
 const SiteName = styled.h1`
   margin: 0;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   padding: 0 4rem;
   line-height: 6rem;
   letter-spacing: 1px;
