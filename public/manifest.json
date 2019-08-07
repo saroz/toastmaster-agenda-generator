@@ -1,15 +1,16 @@
 {
-  "short_name": "ZM - TM Agenda",
-  "name": "Zero Meetings - Toastmasters Meeting Agenda",
+  "short_name": "ZM Toaster",
+  "name": "Zero Meeting - Toastmasters Meeting app",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "appIcon.png",
+      "sizes": "512x512 192x192 16x16",
       "type": "image/x-icon"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
+  "scope": "/",
+  "start_url": "/",
+  "display": "fullscreen",
   "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background_color": "##ad125b"
 }
