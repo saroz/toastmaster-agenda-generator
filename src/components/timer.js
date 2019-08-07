@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Timer from 'react-compound-timer';
 
 import { Main } from './style';
+import speakersData from '../data/founders/timecard_20.json';
 
 const TimerCardBox = styled.section`
     padding: 1.5rem;
@@ -61,142 +62,67 @@ const TimeButton = styled.button`
     cursor: pointer;
 `;
 
-function TimerCard ({ className }) {
-    const [ speakers, updateSpeakers ] = useState([
-        {
-            id: 1,
-            name: 'TM Binayak Dahal',
-            role: 'SAA',
-            sep: false,
-            time: 0
-        },
-        {
-            id: 2,
-            name: 'TM Punit Jajodia',
-            role: 'Presiding Officer',
-            sep: false,
-            time: 0
-        },
-        {
-            id: 3,
-            name: 'TM Alex Wrigley',
-            role: 'TMoE',
-            sep: false,
-            time: 0
-        },
-        {
-            id: 4,
-            name: 'TM Manesh Timsina',
-            role: 'Grammarian',
-            sep: false,
-            time: 0
-        },
-        {
-            id: 5,
-            name: 'TM Sirapa Manandhar',
-            role: 'Ah Counter',
-            sep: false,
-            time: 0
-        },
-        {
-            id: 6,
-            name: 'TM Shekhar Sharma',
-            role: 'Timer',
-            sep: false,
-            time: 0
-        },
-        {
-            id: 7,
-            name: 'TM Sanchita Tiwari',
-            role: 'Ballot Counter',
-            sep: false,
-            time: 0
-        },
-        {
-            id: 8,
-            name: 'TM Nabin Jaiswa',
-            role: 'Listener',
-            sep: false,
-            time: 0
-        },
-        {
-            id: 9,
-            name: 'TM Chandrayan Shrestha (SR3)',
-            role: 'General Evaluator',
-            sep: false,
-            time: 0
-        },
-        {
-            id: 10,
-            name: 'TM Dipesh Khanal',
-            role: 'TTM',
-            sep: false,
-            time: 0
-        },
-        {
-            id: 11,
-            name: 'TM Table Topic Speaker 1',
-            role: 'Table Topic Speaker',
-            sep: true,
-            time: 0
-        },
-        {
-            id: 12,
-            name: 'TM Table Topic Speaker 2',
-            role: 'Table Topic Speaker',
-            sep: false,
-            time: 0
-        },
-        {
-            id: 13,
-            name: 'TM Table Topic Speaker 3',
-            role: 'Table Topic Speaker',
-            sep: false,
-            time: 0
-        },
-        {
-            id: 14,
-            name: 'TM Amit Bajracharya',
-            role: 'Feautured Speaker',
-            sep: true,
-            time: 0
-        },
-        {
-            id: 15,
-            name: 'TM Brijen Joshi (CC, CL)',
-            role: 'Feautured Speaker',
-            sep: false,
-            time: 0
-        },
-        {
-            id: 16,
-            name: 'TM Diwan Adhikari',
-            role: 'Feautured Speaker',
-            sep: false,
-            time: 0
-        },
-        {
-            id: 17,
-            name: 'TM Samjahana Rai (IP2,CC,CL)',
-            role: 'Evaluator for Amit',
-            sep: true,
-            time: 0
-        },
-        {
-            id: 18,
-            name: 'TM Raushan Jaiswal (CC)',
-            role: 'Evaluator for Brijen',
-            sep: false,
-            time: 0
-        },
-        {
-            id: 19,
-            name: 'TM Shaurab Lohanil (ACB, ALB)',
-            role: 'Evaluator for Diwan',
-            sep: false,
-            time: 0
+// const MeetingTimer = styled.section`
+//     position: sticky;
+//     left: 4rem;
+//     right: 4rem;
+//     bottom: 0;
+//     background: #fff; 
+//     box-shadow: rgba(0,0,0,.1) 0.4rem 0.7rem 9.3rem 0.3rem;
+//     padding: 2rem;
+
+//     @media screen and (min-width: 768px) {
+//         padding: 5rem;
+//     }
+// `;
+
+const MeetingTimerButtons = styled.button`
+    height: 2.5rem;
+    color: #fff;
+    background-color: #007bff;
+    overflow: visible;
+    border: 0;
+`;
+
+function TimerCard () {
+    const [ speakers, updateSpeakers ] = useState(speakersData);
+
+    const changeSpeakerName = speaker => {
+        const newSpeakerName = window.prompt('New name for ' + speaker.name);
+        if(!newSpeakerName) return;
+
+        const newSpeakersArray = speakers.map(item => {
+            if(item.id === speaker.id) {
+                item.name = newSpeakerName;
+            }
+
+            return item;
+        })
+
+        updateSpeakers(newSpeakersArray);
+    };
+
+    const addSpeaker = () => {
+        const speakerName = window.prompt('New speaker name?');
+        const speakerRole = window.prompt('New speaker role?');
+
+        if(!speakerName || !speakerRole) {
+            return;
         }
-    ])
+
+        const newSpeakerObj = {
+            id: speakers.length + 1,
+            name: speakerName,
+            role: speakerRole,
+            time: 0
+        };
+
+        updateSpeakers([
+            ...speakers,
+            newSpeakerObj
+        ]);
+    };
+
     return (
         <Main>
             <TimerCardBox>
@@ -214,7 +140,11 @@ function TimerCard ({ className }) {
                     {
                         speakers && speakers.map(speaker => (<tr key={speaker.id} className={speaker.sep ? 'separator' : 'regular'}>
                                 <td>{speaker.id}.</td>
-                                <td>{speaker.name} <br /><small>({speaker.role})</small></td>
+                                <td>
+                                    <span onClick={() => changeSpeakerName(speaker)}>
+                                        {speaker.name}
+                                    </span>
+                                    <br /><small>({speaker.role})</small></td>
                                 <td>
                                     <Timer initialTime={0} startImmediately={false}>
                                         {({ start, resume, pause, stop, reset, getTimerState }) => {
@@ -233,6 +163,8 @@ function TimerCard ({ className }) {
                     }
                     </tbody>
                 </Table>
+                <br /><br />
+                <MeetingTimerButtons type="button" onClick={addSpeaker}>&#65291; ADD A SPEAKER</MeetingTimerButtons>
             </TimerCardBox>
         </Main>
     )
