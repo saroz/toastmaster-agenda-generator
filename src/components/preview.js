@@ -30,8 +30,8 @@ import {
     AgendaTM,
     AgendaContent,
     LoaderIndicator,
-    Help,
 } from './style';
+import HelpCard from './help';
 
 import logo from '../toastmasters-logo.png';
 import remove from '../icons/remove.svg';
@@ -203,9 +203,7 @@ function MeetingAgendaPreview ({ className }) {
     
     return (
         <Main>
-            <Help>
-                <a target="blank" rel="noopener" href="https://youtu.be/OGynTOXjE78">Need Help ?</a>
-            </Help>
+            <HelpCard />
             <SaveDataWrap id="a-buttons" className="buttons">
                 <Button className="bg-primary btn-print" onClick={printMyAgenda}>
                     <img src={print} alt="Print" />

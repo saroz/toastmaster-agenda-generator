@@ -1,7 +1,10 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled from 'styled-components';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import MeetingAgendaPreview from './components/preview';
+import TimerCard from './components/timer';
+import NavBar from './components/nav';
 import './layout.scss';
 
 
@@ -62,12 +65,15 @@ function App() {
               <title>Generate Toastmasters Club Meeting Agenda for Free, No Signup Required</title>
               <meta name="description" content="Generate Toastmasters Club Meeting Agenda for Free, No Signup Required" />
           </Helmet>
-          <MeetingAgendaPreview />
+          <Router>
+            <NavBar />
+            <Route path="/" exact component={MeetingAgendaPreview} />
+            <Route path="/timer/" component={TimerCard} />
+          </Router>
           <Footer>
             <p>Made with <Love /> in Nepal.</p>
             <a rel="noopener" target="blank" href="https://sarozpoddar.com.np">sarozpoddar.com.np</a>
             <a rel="noopener" target="blank" href="https://github.com/saroz">github</a>
-
           </Footer>
       </div>
   );
