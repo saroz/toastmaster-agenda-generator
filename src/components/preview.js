@@ -31,7 +31,6 @@ import {
     AgendaContent,
     LoaderIndicator,
 } from './style';
-import HelpCard from './help';
 
 import logo from '../toastmasters-logo.png';
 import remove from '../icons/remove.svg';
@@ -43,41 +42,17 @@ import viewpreview from '../icons/preview.svg';
 import SimpleMDE from 'react-simplemde-editor';
 import ReactMarkdown from 'react-markdown';
 import 'easymde/dist/easymde.min.css';
+import club_data from '../data/founders/club';
+import agenda_data from '../data/founders/agenda_20';
 
 function MeetingAgendaPreview ({ className }) {
 
     const [ loading, setLoading ] = useState(false);
     const [ tab, setTab ] = useState('write');
     // Executive Team
-    const [ meetingBasic, setmeetingBasic ] = useState({
-        clubName: '',
-        clubNumber: '',
-        clubMission: '',
-        meetingDate: '',
-        meetingDetail: '',
-        meetingTheme: '',
-
-        president: '',
-        vPEducation: '',
-        vPMembership: '',
-        vPRelation: '',
-        secretary: '',
-        treasurer: '',
-        sergeant: '',
-        pastPresident: '',
-        
-
-    });
+    const [ meetingBasic, setmeetingBasic ] = useState(club_data);
     // Agenda Object
-    const [ meetingAgenda, setMeetingAgenda ] = useState([
-        {
-            id: 1,
-            title: '',
-            toastmaster: '',
-            startAt: '',
-            details: ''
-        }
-    ]);
+    const [ meetingAgenda, setMeetingAgenda ] = useState(agenda_data);
 
     // Add New MeetingAgenda Item
     const addNewAgenda = () => {
@@ -99,9 +74,9 @@ function MeetingAgendaPreview ({ className }) {
     }
 
     const noBorder = (element) => {
-        // const checkarr = ['master', 'speakers', 'evaluations'];
+        // const checkarr = ['master', 'speakers', 'evaluations', 'Evaluator'];
         const newarr = element.value.toLowerCase().split(' ');
-        if(newarr.indexOf('master') === -1 && newarr.indexOf('speakers') === -1 && newarr.indexOf('evaluations') === -1) {
+        if(newarr.indexOf('master') === -1 && newarr.indexOf('speakers') === -1 && newarr.indexOf('evaluations') === -1 && newarr.indexOf('Evaluator') === -1) {
             element.parentNode.parentNode.nextSibling.classList.add('no-border');
         }
     }
@@ -203,17 +178,16 @@ function MeetingAgendaPreview ({ className }) {
     
     return (
         <Main>
-            <HelpCard />
             <SaveDataWrap id="a-buttons" className="buttons">
-                <Button className="bg-primary btn-print" onClick={printMyAgenda}>
+                <Button className="bg-primary btn-outline btn-print" onClick={printMyAgenda}>
                     <img src={print} alt="Print" />
                     <span>Print</span>
                 </Button>
-                <Button className="btn-save" onClick={saveData} type="button">
+                <Button className="btn-save btn-outline" onClick={saveData} type="button">
                     <img src={save} alt="Save" />
                     <span>Save Agenda</span>
                 </Button>
-                <Button className="btn-warning" type="button" onClick={tab === 'preview' ? checkWrite : checkPreview}>
+                <Button className="btn-warning btn-outline" type="button" onClick={tab === 'preview' ? checkWrite : checkPreview}>
                     <img src={tab === 'preview' ? viewpreview : edit} alt="View Preview" />
                     <span>{tab === 'preview' ? 'Preview' : 'edit'}</span>
                 </Button>
@@ -226,7 +200,6 @@ function MeetingAgendaPreview ({ className }) {
                         <hr className="border-header-thin"></hr>
                         <hr className="border-white"></hr>
                         <hr className="border-light"></hr>
-
                         <TMILogo>
                             <img src={ logo } className="App-logo" alt="logo" />
                         </TMILogo>

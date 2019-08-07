@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const LG = '1200px'
+const SM = '767px'
 const XXS = '480px'
 
 export const Main = styled.main``;
@@ -13,7 +14,7 @@ export const Textarea = styled.textarea.attrs({ className: 'form-item' })``;
 export const AgendaTitle = styled.h4`
     font-weight: bold;
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     max-width: calc(100% - 30rem);
     flex: 0 0 calc(100% - 30rem);
 `;
@@ -40,7 +41,7 @@ export const AgendaTM = styled.span`
 export const AgendaContent = styled.div`
     margin-left: 6rem;
     * {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
     @media screen {
         margin-left: 6.6rem;
@@ -49,15 +50,19 @@ export const AgendaContent = styled.div`
 
 export const SaveDataWrap = styled.div`
     z-index: 1090;
-    display: inline-flex;
-    justify-content: center;
+    display: flex;
     transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+    justify-content: center;
     position: sticky;
     top: 0;
-    left: 50%;
-    margin: 2rem auto;
-    box-shadow: rgba(0 ,0, 0, 0.3) 0 0.5rem 2.5rem;
-    transform: translateX(-50%);
+    margin: 2rem;
+    justify-content: flex-end;
+    @media only screen and (max-width: ${SM}) {
+        margin: 0;
+        background-color: #fff;
+        padding: 1.5rem;
+        box-shadow: rgba(0 ,0, 0, 0.1) 0 0.5rem 2.5rem;
+    }
     @media print {
         display: none;
     }
@@ -72,11 +77,10 @@ export const AgendaLivePreview = styled.section`
     box-shadow: rgba(0,0,0,.1) 0.4rem 0.7rem 9.3rem 0.3rem;
     @media only screen and (max-width: ${LG}) {
         max-width: 100%;
-    }
+    }  
 `;
 
 export const PreviewIn = styled.div`
-
     display: grid;
     align-items: start;
     grid-template-rows: 15rem 1fr 9rem;
@@ -93,6 +97,12 @@ export const PreviewIn = styled.div`
     }  
     @media only screen and (max-width: ${XXS}) {
         padding: 5rem 2rem;
+    }
+    @media only screen and (max-width: ${SM}) {
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        align-items: inherit;
     }  
     @media print {
         max-width: 100%;
@@ -124,11 +134,15 @@ export const TMILogo = styled.div`
     position: absolute;
     left: 12rem;
     top: 50.5%;
+    @media only screen and (max-width: ${SM}) {
+        left: 50%;
+        margin-left: -9rem;
+    }
 `;
 
 export const AgendaSideBar = styled.aside `
     grid-area: sidebar;
-    padding-top: 12rem;
+    padding-top: 8rem;
     height: 100%;
     box-sizing: border-box;
     position: relative;
@@ -137,12 +151,34 @@ export const AgendaSideBar = styled.aside `
         border-right: 0.2rem solid #004165;
         padding-right: 4rem;
     }
+    @media only screen and (max-width: ${SM}) {
+        .inWrap {
+            padding: 2rem;
+            border-bottom: 0.2rem solid #004165;
+            border-right: none;
+            dl {
+                display: flex;
+                flex-wrap: wrap;
+            }
+            dt {
+                flex: 0 0 50%;
+                box-sizing: border-box;
+                text-align: right;
+            }
+            dd {
+                flex: 0 0 50%;
+            }
+        }
+    }  
 `;
 
 export const AgendaList = styled.div`
     grid-area: main;
     padding-left: 3rem;
     height: 100%;
+    @media only screen and (max-width: ${SM}) {
+        padding: 0;
+    }
 `;
 
 export const Ballots = styled.div`;
@@ -158,6 +194,9 @@ export const Ballots = styled.div`;
         padding: 1.5rem;
         border: 1px dotted #004165;
         box-sizing: border-box;
+    }
+    @media only screen and (max-width: ${SM}) {
+        padding: 1.5rem 2rem 4rem;
     }
 `;
 
@@ -290,19 +329,9 @@ export const Blockquote = styled.blockquote`
         }
     }
 `;
-export const Help = styled.div`
-    position: fixed;
-    right: 4rem;
-    top: 4rem;
-    z-index: 1092;
+export const Help = styled.li`
     a {
-        text-align: center;
-        font-weight: bold;
-        border: 1px solid;
-        padding: 0.5rem 0.8rem;
-        background-color: #fff;
-        border-radius: 0.2rem;
-        text-decoration: none;
+        color: #000 !important;
     }
     @media print {
         display: none;

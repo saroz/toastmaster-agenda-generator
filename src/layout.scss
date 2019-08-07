@@ -26,7 +26,7 @@ dt,
   color: #004165;
   font-weight: 700;
   line-height: 1.8;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   padding: 0.2rem 0.6rem;
 }
 dd {
@@ -264,6 +264,10 @@ table {
   border: none;
   box-shadow: inset #eee 0 0 0 1px;
   border-radius: 0 0 0.2rem 0.2rem;
+  &-vscrollbar {
+    width: 0 !important;
+    min-height: auto !important;      
+  }
 
   &-wrap {
     padding: 0;
@@ -335,49 +339,60 @@ table {
 
 .btn {
   border: none;
-  height: 6rem;
   cursor: pointer;
   font-size: 1.2rem;
-  font-weight: 700;
-  padding: 0 3rem;
+  font-weight: 400;
+  padding: 1.2rem 1.5rem 1rem;
   color: $white;
-  display: block;
-  position: relative;
+  letter-spacing: 1px;
+  display: inline-block;
   text-transform: uppercase;
-  text-align: left;
   transition: all 300ms linear;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   span {
     display: block;
-    padding-left: 1.5rem;
   }
   img {
-    width: 2.5rem;
+    max-width: 2.2rem;
+    margin-right: 1rem;
+    display: none;
   }
+  &-outline {
+    text-align: center;
+    border: 1px solid rgba(0 ,0, 0, 0.1);
+    box-shadow: rgba(0 ,0, 0, 0.03) 0 2px 2px;
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #fff;
+    border-radius: 2px;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    display: flex;
+    align-items: center;
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+
   &-print {
-    background-color: #004165;
-    width: 14rem;
+    color: #004165;
+    &:hover {
+     background-color: #004165;
+     color: #fff;
+    }
   }
   &-save {
-    width: 20rem;
-    background-color: rgba(0, 123, 255, 1 );
-    img {
-      width: 2.8rem;
-    }  
+    color: rgba(0, 123, 255, 1 );
+    &:hover {
+      background-color: rgba(0, 123, 255, 1 );
+      color: #fff;
+    }
   }
   &-warning {
-    img {
-      margin-top: -0.4rem;
+    color: #ad125b;
+    &:hover {
+      background-color: #ad125b;
+      color: #fff;
     }
-    span {
-      min-width: 6rem;
-    }
-    background-color: #ad125b;
-  }
-  &:hover {
-    background-color: #000;
+
   }
   &:focus {
     outline: 0 solid transparent;
@@ -386,7 +401,7 @@ table {
 .form-item {
   border: none;
   border-radius: 0.4rem;
-  font-size: 1.5rem;
+  font-size: inherit;
   color: inherit;
   line-height: 1.8;
   display: block;
