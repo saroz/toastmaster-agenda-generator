@@ -2,7 +2,10 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Timer from 'react-compound-timer';
 
-import { Main } from './style';
+import { Main, Button } from './style';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlayCircle, faPauseCircle, faUser  } from '@fortawesome/free-regular-svg-icons';
+
 import speakersData from '../data/founders/timecard_20.json';
 
 const TimerCardBox = styled.section`
@@ -23,43 +26,59 @@ const TimerCardBox = styled.section`
 const RightTh = styled.th`text-align: right`;
 
 const Table = styled.table`
+    font-size: 1.3rem;
     th {
         text-transform: uppercase;
-        font-size: 120%;
+        font-size: 1.2rem;
+        letter-spacing: 2px;
+        background-color: #eaf0f9;
+        position: sticky;
+        top: 3.5rem;
     }
-
-    @media screen and (min-width: 768px) {
-        font-size: 1.3rem;
-    }
-
+    tr {
+        &:nth-child(even) {
+            background-color: #f8fbff;
+        }
+        &.separator {
+            > td {
+                border-top: 2px solid #ad125b;
+            }
+        }
+    }    
     th,
     td {
-        padding: 0.8rem 1rem !important;
-
+        padding: 1.2rem !important;
+        border-color: #eaf0f9;
+        button {
+            margin-left: 2rem;
+            margin-right: 0;
+        }
         &:first-of-type {
             text-align: center;
+            width: 3rem;
         }
     }
-
-    tr.separator {
-        > td {
-            border-top: 3px solid #003F62 !important;
+    .time-wrap {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        > span {
+            display: block;
+        }
+        
+    }
+    @media only screen and (max-width: 767px) {
+        font-size: 1.5rem;
+        th {
+            top: -1px;
+        }
+        button {
+            margin-top: 1rem;
+        }
+        .time-wrap {
+            flex-direction: column;
         }
     }
-
-`;
-
-const TimeButton = styled.button`
-    display: inline-block;
-    overflow: visible;
-    background: #ad125b;
-    color: #fff;
-    border: 0;
-    margin-left: 2rem;
-    text-transform: uppercase;
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
-    cursor: pointer;
 `;
 
 // const MeetingTimer = styled.section`
@@ -77,13 +96,17 @@ const TimeButton = styled.button`
 // `;
 
 const MeetingTimerButtons = styled.button`
-    height: 2.5rem;
     color: #fff;
+    font-weight: bold;
+    font-size: 0.8rem;
     background-color: #007bff;
     overflow: visible;
-    border: 0;
 `;
-
+const Min = styled.span`
+    padding: 1rem;
+    border-radius: .25rem;
+    background-color: #ecf5ff;
+`;
 function TimerCard () {
     const [ speakers, updateSpeakers ] = useState(speakersData);
 
@@ -150,12 +173,35 @@ function TimerCard () {
                                         {({ start, resume, pause, stop, reset, getTimerState }) => {
                                             const currentState = getTimerState();
                                             return (
-                                            <React.Fragment>
-                                                <Timer.Minutes /> m : <Timer.Seconds /> s
-                                                {currentState === 'INITED' && <TimeButton type="button" onClick={start}>Start</TimeButton>}
-                                                {currentState === 'PAUSED' &&  <TimeButton type="button" onClick={resume}>Resume</TimeButton>}
-                                                {currentState === 'PLAYING' &&  <TimeButton type="button" onClick={pause}>Pause</TimeButton>}
-                                            </React.Fragment>
+                                            <div class="time-wrap">
+                                                <p>
+                                                    <Min><Timer.Minutes /> m</Min> <span>: <Timer.Seconds /> s</span>
+                                                </p>
+                                                {currentState === 'INITED' &&
+                                                    <Button
+                                                        className="btn btn-outline"
+                                                        type="button" onClick={start}> 
+                                                        <FontAwesomeIcon icon={faPlayCircle} />
+                                                        <span>Start</span>
+                                                    </Button>
+                                                }
+                                                {currentState === 'PAUSED' && 
+                                                    <Button
+                                                        className="btn-save btn-outline"
+                                                        type="button" onClick={resume}>
+                                                        <FontAwesomeIcon icon={faPlayCircle} />
+                                                        <span>Resume</span>
+                                                    </Button>
+                                                }
+                                                {currentState === 'PLAYING' &&
+                                                    <Button
+                                                        className="btn-warning btn-outline"
+                                                        type="button" onClick={pause}>
+                                                        <FontAwesomeIcon icon={faPauseCircle} />
+                                                        <span>Pause</span>
+                                                    </Button>
+                                                }
+                                            </div>
                                         )}}
                                     </Timer>
                                 </td>
@@ -164,7 +210,10 @@ function TimerCard () {
                     </tbody>
                 </Table>
                 <br /><br />
-                <MeetingTimerButtons type="button" onClick={addSpeaker}>&#65291; ADD A SPEAKER</MeetingTimerButtons>
+                <MeetingTimerButtons className="btn btn-outline btn-add" type="button" onClick={addSpeaker}>
+                    <FontAwesomeIcon icon={faUser} />
+                    <span>Add a Speaker</span>
+                </MeetingTimerButtons>
             </TimerCardBox>
         </Main>
     )

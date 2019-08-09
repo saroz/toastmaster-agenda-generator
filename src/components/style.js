@@ -51,13 +51,15 @@ export const AgendaContent = styled.div`
 export const SaveDataWrap = styled.div`
     z-index: 1090;
     display: flex;
+    max-width: 30%;
     transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
     justify-content: center;
     position: sticky;
     top: 0;
-    margin: 2rem;
+    margin: 2rem 2rem 2rem auto;
     justify-content: flex-end;
     @media only screen and (max-width: ${SM}) {
+        max-width: 100%;
         margin: 0;
         background-color: #fff;
         padding: 1.5rem;

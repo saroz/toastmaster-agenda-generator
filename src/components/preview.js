@@ -35,10 +35,6 @@ import {
 import logo from '../toastmasters-logo.png';
 import remove from '../icons/remove.svg';
 import add from '../icons/add.svg';
-import print from '../icons/print.svg';
-import save from '../icons/save.svg';
-import edit from '../icons/edit.svg';
-import viewpreview from '../icons/preview.svg';
 import SimpleMDE from 'react-simplemde-editor';
 import ReactMarkdown from 'react-markdown';
 import 'easymde/dist/easymde.min.css';
@@ -76,7 +72,7 @@ function MeetingAgendaPreview ({ className }) {
     const noBorder = (element) => {
         // const checkarr = ['master', 'speakers', 'evaluations', 'Evaluator'];
         const newarr = element.value.toLowerCase().split(' ');
-        if(newarr.indexOf('master') === -1 && newarr.indexOf('speakers') === -1 && newarr.indexOf('evaluations') === -1 && newarr.indexOf('Evaluator') === -1) {
+        if(newarr.indexOf('master') === -1 && newarr.indexOf('speakers') === -1 && newarr.indexOf('evaluations') === -1 && newarr.indexOf('evaluator') === -1) {
             element.parentNode.parentNode.nextSibling.classList.add('no-border');
         }
     }
@@ -172,7 +168,6 @@ function MeetingAgendaPreview ({ className }) {
     };
 
     const printMyAgenda = () => {
-        checkPreview();
         window.print();
     }
     
@@ -180,16 +175,13 @@ function MeetingAgendaPreview ({ className }) {
         <Main>
             <SaveDataWrap id="a-buttons" className="buttons">
                 <Button className="bg-primary btn-outline btn-print" onClick={printMyAgenda}>
-                    <img src={print} alt="Print" />
                     <span>Print</span>
                 </Button>
                 <Button className="btn-save btn-outline" onClick={saveData} type="button">
-                    <img src={save} alt="Save" />
                     <span>Save Agenda</span>
                 </Button>
                 <Button className="btn-warning btn-outline" type="button" onClick={tab === 'preview' ? checkWrite : checkPreview}>
-                    <img src={tab === 'preview' ? viewpreview : edit} alt="View Preview" />
-                    <span>{tab === 'preview' ? 'Preview' : 'edit'}</span>
+                    <span>{tab === 'preview' ? 'edit' : 'Preview'}</span>
                 </Button>
                 {loading && <LoaderIndicator className="fa fa-spinner fa-spin" />}
             </SaveDataWrap>

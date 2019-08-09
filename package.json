@@ -46,6 +46,9 @@
     "not op_mini all"
   ],
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.21",
+    "@fortawesome/free-regular-svg-icons": "^5.10.1",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "array-move": "^2.1.0",
     "gh-pages": "^2.0.1",
     "jspdf": "^1.5.3",

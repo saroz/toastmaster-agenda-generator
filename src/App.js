@@ -7,25 +7,26 @@ import TimerCard from './components/timer';
 import NavBar from './components/nav';
 import './layout.scss';
 
-
+const SM = '767px'
 const Footer = styled.footer`
   padding: 4rem;
+  display: flex;
   text-align: center;
+  justify-content: center;
   p {
     font-size: 1rem;
     color: #5a5a5a;
-
+    margin-right: 2rem;
     font-weight: bold;
-    margin-bottom: .6rem;
   }
   a {
     display: inline-block;
     color: #007bff;
-    margin: 0 1rem;
+    margin: 0 .5rem;
     font-size: 1rem;
     text-decoration: none;
     border-bottom: 1px solid;
-    padding: 0.2rem 0;
+    padding: 0;
     transition: all 300ms linear;
     &:hover {
       color: #000;
@@ -34,26 +35,30 @@ const Footer = styled.footer`
   @media print {
     display: none;
   }
+  @media only screen and (max-width: ${SM}) {
+    padding-top: 2rem
+    padding-bottom: 8rem;
+  }
 `;
 const Love = styled.span`
   background-color: red;
-  height: .8rem;
-  width: .8rem;
+  height: 8px;
+  width: 8px;
   transform: rotate(-45deg);
   position: relative;
   display: inline-block;
-  margin: .2rem .2rem 0;
+  margin: 2px 2px 0;
   &::before,
   &::after {
     content: "";
     background-color: red;
     border-radius: 50%;
-    height: .8rem;
+    height: 8px;
     position: absolute;
-    width: .8rem;
+    width: 8px;
   } 
   &::before {
-    top: -0.4rem;
+    top: -4px;
     left: 0;
   }
 `;
@@ -72,8 +77,8 @@ function App() {
           </Router>
           <Footer>
             <p>Made with <Love /> in Nepal.</p>
-            <a rel="noopener" target="blank" href="https://sarozpoddar.com.np">sarozpoddar.com.np</a>
-            <a rel="noopener" target="blank" href="https://github.com/saroz">github</a>
+            <a rel="noopener" target="blank" href="https://optimumfuturist.com/">Zero Meeting</a>
+            <a rel="noopener" target="blank" href="https://github.com/saroz/agenda-generator">github</a>
           </Footer>
       </div>
   );
