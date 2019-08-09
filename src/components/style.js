@@ -57,12 +57,13 @@ export const SaveDataWrap = styled.div`
     position: sticky;
     top: 0;
     margin: 2rem 2rem 2rem auto;
+    padding-right: 3rem;
     justify-content: flex-end;
     @media only screen and (max-width: ${SM}) {
         max-width: 100%;
         margin: 0;
         background-color: #fff;
-        padding: 1.5rem;
+        padding: 1.5rem 3rem 1.5rem 1.5rem;
         box-shadow: rgba(0 ,0, 0, 0.1) 0 0.5rem 2.5rem;
     }
     @media print {
@@ -303,10 +304,14 @@ export const ClubMeetingTheme = styled.p`
 `;
 export const LoaderIndicator = styled.i`
     position: absolute;
-    left: 102%;
-    top: 2rem;
-    color: #007bff;
+    right: 0;
+    top: 0.8rem;
+    color: #ad125b;
     font-size: 2rem !important;
+    @media only screen and (max-width: ${SM}) {
+        top: 2.2rem;
+        right: 1rem;
+    }
 `;
 
 export const TMInternational = styled.p`
