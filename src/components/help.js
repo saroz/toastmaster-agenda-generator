@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import howtoMd from '../howto.md'
 import { Main, SaveDataWrap } from './style';
-import { faArrowAltCircleLeft } from '@fortawesome/free-regular-svg-icons';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const Help = styled.div`
     background: #fff;
@@ -54,7 +54,7 @@ function HelpCard () {
         <Main>
             <SaveDataWrap id="a-buttons" className="buttons">
                 <NavLink to="/" className="btn btn-outline">
-                    <FontAwesomeIcon icon={faArrowAltCircleLeft} />
+                    <FontAwesomeIcon icon={faArrowLeft} />
                     <span>Back</span>
                 </NavLink>
             </SaveDataWrap>

@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import ReactDOMServer from "react-dom/server";
 import PropTypes from 'prop-types';
 import localforage from 'localforage';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import {
     AgendaLivePreview,
     PreviewIn,
@@ -33,8 +34,6 @@ import {
 } from './style';
 
 import logo from '../toastmasters-logo.png';
-import remove from '../icons/remove.svg';
-import add from '../icons/add.svg';
 import SimpleMDE from 'react-simplemde-editor';
 import ReactMarkdown from 'react-markdown';
 import 'easymde/dist/easymde.min.css';
@@ -233,11 +232,11 @@ function MeetingAgendaPreview ({ className }) {
                                     <AgendaActionButtons>
                                         { meetingAgenda.length > 1 && (
                                                 <span data-title="Remove" onClick={ (e) => removeAgenda(e, agenda.id) } className="action action-remove">
-                                                    <img src={remove} alt="Re-order"/>
+                                                    <FontAwesomeIcon icon={faMinus} />
                                                 </span>
                                         )}
                                         <span data-title="Add" onClick={addNewAgenda} className="action action-add">
-                                            <img src={add} alt="Re-order"/>
+                                            <FontAwesomeIcon icon={faPlus} />
                                         </span>
                                     </AgendaActionButtons>
 

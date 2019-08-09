@@ -157,12 +157,9 @@ table {
       cursor: pointer;
       position: relative;
       display: flex;
-      font-size: 0;
-      img {
-        display: block;
-        width: 1rem;
-        margin: 0 auto;
-        align-self: center;
+      color: $white;
+      [role="img"] {
+        margin: 6px auto;
       }
       &-remove {
         background-color: #DB0000; 
