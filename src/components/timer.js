@@ -173,7 +173,7 @@ function TimerCard () {
                                         {({ start, resume, pause, stop, reset, getTimerState }) => {
                                             const currentState = getTimerState();
                                             return (
-                                            <div class="time-wrap">
+                                            <div className="time-wrap">
                                                 <p>
                                                     <Min><Timer.Minutes /> m</Min> <span>: <Timer.Seconds /> s</span>
                                                 </p>
