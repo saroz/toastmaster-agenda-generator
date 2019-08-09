@@ -1,8 +1,8 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
+import { SM } from './style';
 import styled from 'styled-components';
 import zmlogo from '../logo.png';
-const SM = '767px'
 
 const ZMLogo = styled.span.attrs({ className: 'zmLogo' })`
     width: 36px;

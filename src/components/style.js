@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-const LG = '1200px'
-const SM = '767px'
-const XXS = '480px'
+export const LG = '1200px'
+export const SM = '767px'
+export const XXS = '480px'
 
 export const Main = styled.main``;
 export const AgendaActionButtons = styled.div.attrs({ className: 'agenda-actionButtons' })``;
@@ -340,19 +340,5 @@ export const Blockquote = styled.blockquote`
             white-space: nowrap;
             padding-right: 0.5rem;
         }
-    }
-`;
-export const Help = styled.div`
-    margin: 3rem auto;
-    width: 76.7rem;
-    max-width: 100%;
-    font-size: 1.5rem;
-    code {
-        background-color: #fff0b6;
-        border-radius: 3px;
-        padding: 2px 4px;        
-    }
-    @media print {
-        display: none;
     }
 `;
