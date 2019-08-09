@@ -196,6 +196,84 @@ function MeetingAgendaPreview ({ className }) {
                             <img src={ logo } className="App-logo" alt="logo" />
                         </TMILogo>
                     </AgendaHeader>
+                    <AgendaList>
+                        <ClubName>
+                            <DFlex>
+                                <ClubTitle>
+                                    <span>{meetingBasic.clubName || `Club Name`}</span>
+                                    <Field type="text" autoComplete="off" name="clubName" onChange={updateMeetingBasicInfo} value={meetingBasic.clubName} placeholder="Club Name" />
+                                </ClubTitle>
+                                <ClubNumber>
+                                    <span>{meetingBasic.clubNumber || `Club Number`}</span>
+                                    <Field type="text" autoComplete="off" name="clubNumber" onChange={updateMeetingBasicInfo} value={meetingBasic.clubNumber} placeholder="Club Number" />
+                                </ClubNumber>
+                            </DFlex>
+                            <ClubMeetingDate>
+                            <Field
+                                type="text"
+                                autoComplete="off"
+                                name="meetingDate"
+                                onChange={updateMeetingBasicInfo}
+                                value={meetingBasic.meetingDate}
+                                placeholder="Meeting date" />
+                            </ClubMeetingDate>
+                            <ClubMeetingTheme>
+                                <Field
+                                type="text"
+                                autoComplete="off"
+                                name="meetingTheme"
+                                onChange={updateMeetingBasicInfo}
+                                value={meetingBasic.meetingTheme}
+                                placeholder="Meeting theme" />
+                            </ClubMeetingTheme>
+                        </ClubName>
+                        <div className="agendas-wrap">
+                            { meetingAgenda.map(agenda => 
+                                <AgendaItem className={`agenda ${tab === 'write' ? 'hover' : 'no-hover'}`} key={ agenda.id }>
+                                    <AgendaActionButtons>
+                                        { meetingAgenda.length > 1 && (
+                                                <span data-title="Remove" onClick={ (e) => removeAgenda(e, agenda.id) } className="action action-remove">
+                                                    <img src={remove} alt="Re-order"/>
+                                                </span>
+                                        )}
+                                        <span data-title="Add" onClick={addNewAgenda} className="action action-add">
+                                            <img src={add} alt="Re-order"/>
+                                        </span>
+                                    </AgendaActionButtons>
+
+                                    <AgendaItemTitle>
+                                        <time className="agenda-time">
+                                            <Field type="text" name="startAt" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="6:00" value={agenda.startAt} />
+                                        </time>
+                                        <AgendaTitle className="agenda-title">
+                                            <Field type="text" name="title" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Chair Calls Meeting to Order" value={agenda.title} />
+                                        </AgendaTitle>
+                                        <AgendaTM className="agenda-TM">
+                                            <Field type="text" name="toastmaster" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Toastmaster name" value={agenda.toastmaster} />
+                                        </AgendaTM>
+                                    </AgendaItemTitle>
+                                    <AgendaContent className="agenda-content">
+                                        <SimpleMDE
+                                            getMdeInstance= { getInstance }
+                                            id={ `details_${ agenda.id }` }
+                                            value={ agenda.details}
+                                            onChange={ (e) => updateMeetingAgenda(e, agenda.id) }
+                                            options={{ autoSave: false, autoFocus: true, spellChecker: false, status: false,
+                                                toolbar: [ 'bold', 'quote', 'table', '|', 'preview' ],
+                                                previewRender(content) {
+                                                    return ReactDOMServer.renderToString(
+                                                        <ReactMarkdown
+                                                        source={content}
+                                                        escapeHtml={ false }
+                                                        />
+                                                    );
+                                                }
+                                        }} />
+                                    </AgendaContent>
+                                </AgendaItem>
+                            )}
+                        </div>
+                    </AgendaList>
                     <AgendaSideBar>
                         <div className="inWrap"> 
                             <dl>
@@ -311,84 +389,6 @@ function MeetingAgendaPreview ({ className }) {
                             </p>
                         </div>
                     </AgendaSideBar> 
-                    <AgendaList>
-                        <ClubName>
-                            <DFlex>
-                                <ClubTitle>
-                                    <span>{meetingBasic.clubName || `Club Name`}</span>
-                                    <Field type="text" autoComplete="off" name="clubName" onChange={updateMeetingBasicInfo} value={meetingBasic.clubName} placeholder="Club Name" />
-                                </ClubTitle>
-                                <ClubNumber>
-                                    <span>{meetingBasic.clubNumber || `Club Number`}</span>
-                                    <Field type="text" autoComplete="off" name="clubNumber" onChange={updateMeetingBasicInfo} value={meetingBasic.clubNumber} placeholder="Club Number" />
-                                </ClubNumber>
-                            </DFlex>
-                            <ClubMeetingDate>
-                            <Field
-                                type="text"
-                                autoComplete="off"
-                                name="meetingDate"
-                                onChange={updateMeetingBasicInfo}
-                                value={meetingBasic.meetingDate}
-                                placeholder="Meeting date" />
-                            </ClubMeetingDate>
-                            <ClubMeetingTheme>
-                                <Field
-                                type="text"
-                                autoComplete="off"
-                                name="meetingTheme"
-                                onChange={updateMeetingBasicInfo}
-                                value={meetingBasic.meetingTheme}
-                                placeholder="Meeting theme" />
-                            </ClubMeetingTheme>
-                        </ClubName>
-                        <div className="agendas-wrap">
-                            { meetingAgenda.map(agenda => 
-                                <AgendaItem className={`agenda ${tab === 'write' ? 'hover' : 'no-hover'}`} key={ agenda.id }>
-                                    <AgendaActionButtons>
-                                        { meetingAgenda.length > 1 && (
-                                                <span data-title="Remove" onClick={ (e) => removeAgenda(e, agenda.id) } className="action action-remove">
-                                                    <img src={remove} alt="Re-order"/>
-                                                </span>
-                                        )}
-                                        <span data-title="Add" onClick={addNewAgenda} className="action action-add">
-                                            <img src={add} alt="Re-order"/>
-                                        </span>
-                                    </AgendaActionButtons>
-
-                                    <AgendaItemTitle>
-                                        <time className="agenda-time">
-                                            <Field type="text" name="startAt" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="6:00" value={agenda.startAt} />
-                                        </time>
-                                        <AgendaTitle className="agenda-title">
-                                            <Field type="text" name="title" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Chair Calls Meeting to Order" value={agenda.title} />
-                                        </AgendaTitle>
-                                        <AgendaTM className="agenda-TM">
-                                            <Field type="text" name="toastmaster" autoComplete="off" onChange={(e) => updateMeetingAgenda(e, agenda.id)} placeholder="Toastmaster name" value={agenda.toastmaster} />
-                                        </AgendaTM>
-                                    </AgendaItemTitle>
-                                    <AgendaContent className="agenda-content">
-                                        <SimpleMDE
-                                            getMdeInstance= { getInstance }
-                                            id={ `details_${ agenda.id }` }
-                                            value={ agenda.details}
-                                            onChange={ (e) => updateMeetingAgenda(e, agenda.id) }
-                                            options={{ autoSave: false, autoFocus: true, spellChecker: false, status: false,
-                                                toolbar: [ 'bold', 'quote', 'table', '|', 'preview' ],
-                                                previewRender(content) {
-                                                    return ReactDOMServer.renderToString(
-                                                        <ReactMarkdown
-                                                        source={content}
-                                                        escapeHtml={ false }
-                                                        />
-                                                    );
-                                                }
-                                        }} />
-                                    </AgendaContent>
-                                </AgendaItem>
-                            )}
-                        </div>
-                    </AgendaList>
                     <Ballots>
                         <span>Better Table Topics Speaker</span>
                         <span>Better Featured Speaker</span>

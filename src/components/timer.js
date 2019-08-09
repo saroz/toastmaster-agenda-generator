@@ -2,24 +2,23 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Timer from 'react-compound-timer';
 
-import { Main, Button } from './style';
+import { Main, Button, SaveDataWrap } from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle, faPauseCircle, faUser  } from '@fortawesome/free-regular-svg-icons';
 
 import speakersData from '../data/founders/timecard_20.json';
 
 const TimerCardBox = styled.section`
-    padding: 1.5rem;
+    padding: 1.5rem 1.5rem 3rem;
     background: #fff;
     box-shadow: rgba(0,0,0,.1) 0.4rem 0.7rem 9.3rem 0.3rem;
     box-sizing: border-box;
-    max-width:90%;
-    margin: 2rem auto 0;
-
+    max-width: 100%;
     @media screen and (min-width: 767px) {
         width: 119.0551181102rem;
         margin-top: 5rem;
         padding: 5rem;
+        margin: 2rem auto 0;
     }
 `;
 
@@ -52,6 +51,7 @@ const Table = styled.table`
         button {
             margin-left: 2rem;
             margin-right: 0;
+            width: 10rem;
         }
         &:first-of-type {
             text-align: center;
@@ -148,6 +148,12 @@ function TimerCard () {
 
     return (
         <Main>
+            <SaveDataWrap id="a-buttons" className="buttons">
+                <MeetingTimerButtons className="btn btn-outline btn-add" type="button" onClick={addSpeaker}>
+                    <FontAwesomeIcon icon={faUser} />
+                    <span>Add a Speaker</span>
+                </MeetingTimerButtons>
+            </SaveDataWrap>
             <TimerCardBox>
                 <h1>Timer Sheet</h1>
                 <hr />
@@ -168,7 +174,7 @@ function TimerCard () {
                                         {speaker.name}
                                     </span>
                                     <br /><small>({speaker.role})</small></td>
-                                <td>
+                                <td width="40%">
                                     <Timer initialTime={0} startImmediately={false}>
                                         {({ start, resume, pause, stop, reset, getTimerState }) => {
                                             const currentState = getTimerState();
@@ -209,11 +215,6 @@ function TimerCard () {
                     }
                     </tbody>
                 </Table>
-                <br /><br />
-                <MeetingTimerButtons className="btn btn-outline btn-add" type="button" onClick={addSpeaker}>
-                    <FontAwesomeIcon icon={faUser} />
-                    <span>Add a Speaker</span>
-                </MeetingTimerButtons>
             </TimerCardBox>
         </Main>
     )

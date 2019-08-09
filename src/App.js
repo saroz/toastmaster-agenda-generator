@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import MeetingAgendaPreview from './components/preview';
 import TimerCard from './components/timer';
+import HelpCard from './components/help';
 import NavBar from './components/nav';
 import './layout.scss';
 
@@ -74,6 +75,7 @@ function App() {
             <NavBar />
             <Route path="/" exact component={MeetingAgendaPreview} />
             <Route path="/timer/" component={TimerCard} />
+            <Route path="/help/" component={HelpCard} />
           </Router>
           <Footer>
             <p>Made with <Love /> in Nepal.</p>

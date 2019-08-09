@@ -467,6 +467,13 @@ textarea.form-item {
   &.large {
     min-height: 20rem;
   }
+  @media only screen and (max-width: 767px) {
+    &.large {
+      min-height: 10rem;
+    }
+  
+  }
+    
 }
 blockquote {
   margin: .125rem 0;

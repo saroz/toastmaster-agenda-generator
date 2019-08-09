@@ -55,13 +55,14 @@ export const SaveDataWrap = styled.div`
     transition: transform 225ms cubic-bezier(0, 0, 0.2, 1) 0ms;
     justify-content: center;
     position: sticky;
-    top: 0;
+    top: 0.5rem;
     margin: 2rem 2rem 2rem auto;
     padding-right: 3rem;
     justify-content: flex-end;
     @media only screen and (max-width: ${SM}) {
         max-width: 100%;
         margin: 0;
+        top: 0;
         background-color: #fff;
         padding: 1.5rem 3rem 1.5rem 1.5rem;
         box-shadow: rgba(0 ,0, 0, 0.1) 0 0.5rem 2.5rem;
@@ -155,22 +156,27 @@ export const AgendaSideBar = styled.aside `
         padding-right: 4rem;
     }
     @media only screen and (max-width: ${SM}) {
+        padding-top: 2rem;
         .inWrap {
-            padding: 2rem;
-            border-bottom: 0.2rem solid #004165;
+            padding: 3rem 2rem 2rem;
+            border-top: 0.2rem solid #004165;
             border-right: none;
             dl {
                 display: flex;
                 flex-wrap: wrap;
             }
             dt {
-                flex: 0 0 50%;
+                flex: 0 0 40%;
                 box-sizing: border-box;
-                text-align: right;
             }
             dd {
-                flex: 0 0 50%;
+                flex: 0 0 59%;
             }
+            dd input,
+            textarea {
+                border: 1px solid #f4f4f4;
+            }
+
         }
     }  
 `;
@@ -180,7 +186,7 @@ export const AgendaList = styled.div`
     padding-left: 3rem;
     height: 100%;
     @media only screen and (max-width: ${SM}) {
-        padding: 0;
+        padding: 8rem 0 0;
     }
 `;
 
@@ -336,9 +342,15 @@ export const Blockquote = styled.blockquote`
         }
     }
 `;
-export const Help = styled.li`
-    a {
-        color: #000 !important;
+export const Help = styled.div`
+    margin: 3rem auto;
+    width: 76.7rem;
+    max-width: 100%;
+    font-size: 1.5rem;
+    code {
+        background-color: #fff0b6;
+        border-radius: 3px;
+        padding: 2px 4px;        
     }
     @media print {
         display: none;

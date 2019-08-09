@@ -1,4 +1,6 @@
-# zm-toastmasters-agenda
+<br/>
+
+## Helper Guide
 Create a weekly meeting agenda for you club (Toastmasters Club)
 
 
@@ -13,35 +15,65 @@ Create a weekly meeting agenda for you club (Toastmasters Club)
 | Table body | `|` TM John Doe `|` | before and after `(pipe) |` |
 
 
+<br/>
 
-1. **WOD Example & Output**
-```
+### 1. **WOD Example & Output**
+
+<pre>
 > Word of the Day: **PROPENSITY**
 > 
 > Meaning: expressing astonishment or admiration.
 >
 > Usages: they wowed audiences on their recent Nepalese tour
-```
+
+</pre>
+
+
 > Word of the Day: **PROPENSITY**
 >
 > Meaning: expressing astonishment or admiration.
 >
 > Usages: they wowed audiences on their recent Nepalese tour
 
-<br>
+<br/>
 
-2. **Table Example & Output**
+### 2. **Table Example & Output**
 
-```
-| Speaker   | Project | Speach Title | Level | Time |
-| -------- | ----------- | ---------| ------| ------|
-| TM Name  | Ice-Breaker | My Life  | L1-P1 | 4-5 min |
-| TM Name  | Pathways    | My Life  | L1-P1 | 5-7 min |
-| TM Name  | Educational | Pathways |       | 10-15 min |
-```
+<pre>
+
+`header`       | Speaker  | Project     | Speach Title | Level | Time      |
+`seperator`    | -------- | ----------- | -------------| ------| ----------|
+`body`         | TM Name  | Ice-Breaker | My Life      | L1-P1 | 4-5 min   |
+               | TM Name  | Pathways    | My Life      | L1-P1 | 5-7 min   |
+               | TM Name  | Educational | Pathways     |       | 10-15 min |
+
+</pre>
+
+note: `space, alignment or size does not affect the output`
+
+<pre>
+
+`header`       | Speaker| Project | Speach Title | Level | Time |
+`seperator`    | --- | ---- | ---| ------| -----|
+`body`         | TM Name | Ice-Breaker | My Life | L1-P1 | 4-5 min |
+               | TM Name | Pathways | My Life | L1-P1 | 5-7 min |
+               | TM Name | Educational | Pathways |   | 10-15 min |
+
+</pre>
+
+
+
+
 | Speaker   | Project | Speach Title | Level | Time |
 | ----- | ----- | ----| -------- | ----|
 | TM Name  | Ice-Breaker | My Life  | L1-P1 | 4-5 min|
 | TM Name  | Pathways    | My Life  | L1-P1 | 5-7 min|
 | TM Name  | Educational | Pathways |       | 10-15 min|
 
+<br/>
+<br/>
+<br/>
+
+## Helper Video
+
+<br/>
