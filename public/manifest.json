@@ -1,6 +1,6 @@
 {
   "short_name": "ZM Toaster",
-  "name": "Zero Meeting - Toastmasters Meeting app",
+  "name": "Zero Meeting\nToastmasters Meeting app",
   "icons": [
     {
       "src": "icon-512x512.png",
@@ -47,5 +47,5 @@
   "start_url": "/",
   "display": "fullscreen",
   "theme_color": "#000000",
-  "background_color": "#ad125b"
+  "background_color": "#007BFF"
 }
