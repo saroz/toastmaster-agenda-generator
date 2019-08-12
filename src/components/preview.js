@@ -124,7 +124,7 @@ function MeetingAgendaPreview ({ className }) {
     // Fetch MeetingBasicInfo data
     useEffect(() => {
         localforage.config({
-            name: 'toastmaste_saroz-offline'
+            name: 'zm-offline'
         });
         // Meeting Basic Information
         localforage.getItem('meeting', function(err, value) {

@@ -384,24 +384,27 @@ table {
   &-add {
     background-color: rgba(0, 123, 255, 1 );
     color: #fff;
-}
+  }
   &-print {
     color: #004165;
-    &:hover {
+    &:hover,
+    &.active {
      background-color: #004165;
      color: #fff;
     }
   }
   &-save {
     color: rgba(0, 123, 255, 1 );
-    &:hover {
+    &:hover,
+    &.active {
       background-color: rgba(0, 123, 255, 1 );
       color: #fff;
     }
   }
   &-warning {
     color: #ad125b;
-    &:hover {
+    &:hover,
+    &.active {
       background-color: #ad125b;
       color: #fff;
     }

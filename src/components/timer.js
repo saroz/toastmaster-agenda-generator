@@ -5,6 +5,7 @@ import Timer from 'react-compound-timer';
 import { Main, Button, SaveDataWrap } from './style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlayCircle, faPauseCircle, faUser  } from '@fortawesome/free-regular-svg-icons';
+import { faPen } from '@fortawesome/free-solid-svg-icons';
 
 import speakersData from '../data/founders/timecard_20.json';
 
@@ -40,7 +41,7 @@ const Table = styled.table`
         }
         &.separator {
             > td {
-                border-top: 2px solid #ad125b;
+                border-top: 2px solid #5f5f5f;
             }
         }
     }    
@@ -48,10 +49,52 @@ const Table = styled.table`
     td {
         padding: 1.2rem !important;
         border-color: #eaf0f9;
-        button {
+        .btn {
             margin-left: 2rem;
             margin-right: 0;
             width: 10rem;
+
+        }
+        small {
+            display: block;
+            margin-top: -.5rem;
+        }
+        &.speaker-name {
+            color: rgba(0, 0, 0, 0.5);
+            cursor: pointer;
+            span,
+            small,
+            [role="img"] {
+                transition: all 300ms ease;
+            }
+            p {
+                display: flex;
+            }
+
+            span {
+                font-weight: bold;
+                margin-right: auto;
+                align-items: center;
+                color: rgba(0, 0, 0, 0.7);
+            }
+            [role="img"] {
+                background-color: #fff;
+                padding: .8rem .8rem 1rem 1rem;
+                border-radius: .25rem;
+                display: inline-block;
+                color: rgba(0, 0, 0, 0.3);
+            }
+            &:hover,
+            &:focus {
+                span {
+                    color: rgba(178, 31, 100, 1);
+                }
+                [role="img"] {
+                    color: rgba(178, 31, 100, 0.8);
+                    box-shadow: rgba(178, 31, 100, 0.3) 0 0 0 1px, rgba(178, 31, 100, 0.2) 0 .25rem 1rem;
+                }
+            } 
+
         }
         &:first-of-type {
             text-align: center;
@@ -80,20 +123,6 @@ const Table = styled.table`
         }
     }
 `;
-
-// const MeetingTimer = styled.section`
-//     position: sticky;
-//     left: 4rem;
-//     right: 4rem;
-//     bottom: 0;
-//     background: #fff; 
-//     box-shadow: rgba(0,0,0,.1) 0.4rem 0.7rem 9.3rem 0.3rem;
-//     padding: 2rem;
-
-//     @media screen and (min-width: 768px) {
-//         padding: 5rem;
-//     }
-// `;
 
 const MeetingTimerButtons = styled.button`
     color: #fff;
@@ -169,23 +198,29 @@ function TimerCard () {
                     {
                         speakers && speakers.map(speaker => (<tr key={speaker.id} className={speaker.sep ? 'separator' : 'regular'}>
                                 <td>{speaker.id}.</td>
-                                <td>
-                                    <span onClick={() => changeSpeakerName(speaker)}>
-                                        {speaker.name}
-                                    </span>
-                                    <br /><small>({speaker.role})</small></td>
+                                <td className="speaker-name" onClick={() => changeSpeakerName(speaker)}>
+                                    <p>
+                                        <span>{speaker.name}</span>
+                                        <FontAwesomeIcon title="edit" icon={faPen}></FontAwesomeIcon>
+                                    </p>
+                                    <small>({speaker.role})</small>
+                                </td>
                                 <td width="40%">
-                                    <Timer initialTime={0} startImmediately={false}>
-                                        {({ start, resume, pause, stop, reset, getTimerState }) => {
+                                    <Timer initialTime={speaker.time} startImmediately={false}
+                                    >
+                                        {({ start, resume, pause, stop, reset, getTimerState, getTime }) => {
                                             const currentState = getTimerState();
                                             return (
                                             <div className="time-wrap">
                                                 <p>
-                                                    <Min><Timer.Minutes /> m</Min> <span>: <Timer.Seconds /> s</span>
+                                                    <Min>
+                                                        <Timer.Minutes /> m
+                                                    </Min>
+                                                    <span>: <Timer.Seconds /> s</span>
                                                 </p>
                                                 {currentState === 'INITED' &&
                                                     <Button
-                                                        className="btn btn-outline"
+                                                        className="btn btn-outline active"
                                                         type="button" onClick={start}> 
                                                         <FontAwesomeIcon icon={faPlayCircle} />
                                                         <span>Start</span>
@@ -193,15 +228,16 @@ function TimerCard () {
                                                 }
                                                 {currentState === 'PAUSED' && 
                                                     <Button
-                                                        className="btn-save btn-outline"
-                                                        type="button" onClick={resume}>
+                                                        className="btn-save btn-outline active"
+                                                        type="button"
+                                                        onClick={resume}>
                                                         <FontAwesomeIcon icon={faPlayCircle} />
                                                         <span>Resume</span>
                                                     </Button>
                                                 }
                                                 {currentState === 'PLAYING' &&
                                                     <Button
-                                                        className="btn-warning btn-outline"
+                                                        className="btn-warning btn-outline active"
                                                         type="button" onClick={pause}>
                                                         <FontAwesomeIcon icon={faPauseCircle} />
                                                         <span>Pause</span>
