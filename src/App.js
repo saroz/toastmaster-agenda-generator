@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Helmet from 'react-helmet';
+import ReactGA from "react-ga";
 import styled from 'styled-components';
+
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import MeetingAgendaPreview from './components/preview';
 import TimerCard from './components/timer';
@@ -65,6 +67,12 @@ const Love = styled.span`
 `;
 
 function App() {
+  useEffect(() => {
+      ReactGA.initialize('G-8YTJVKL4KB');
+      ReactGA.pageview(window.location.pathname + window.location.search);
+      return;
+  }, []); 
+
   return (
       <div className="App">
           <Helmet>
